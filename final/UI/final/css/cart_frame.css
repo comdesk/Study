@@ -1,15 +1,18 @@
 @charset "utf-8";
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-#wrap {
-    font-family: 'Jeju Gothic', sans-serif;
-}
 body {
     margin: 0;
 }
-.widthfix {
-    min-width: 1500px;
+#wrap {
+    font-family: 'Jeju Gothic', sans-serif;
+    overflow: hidden;
+    min-width: 1190px;
 }
+/* .widthfix {
+    overflow: hidden;
+    min-width: 1190px;
+} */
 .header_color {
     background-color: #53917E; 
     height: 100px; 
@@ -18,9 +21,9 @@ body {
     width: 1130px;
     height: 70px;
     margin: 0 auto;
-    padding: 0px 100px;
+    /* padding: 0px 100px; */
     /* background-color: #7cb342; */
-    position: sticky;
+    position: relative;
 
     display: flex;
     justify-content: space-between;
@@ -87,9 +90,10 @@ body {
     top: 0px;
     z-index: 1;
 }
-#container {
+#container {   
     width: 1130px;
     margin: 0 auto;
+    position: relative;
 }
 #login_bt {
     border-radius: 20px;
@@ -169,6 +173,76 @@ body {
 }
 .mypick_bt:first-of-type {
     margin-left: 0;
+}
+#section {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+.cate_ul {
+    padding: 0;
+}
+.cate_nav_item {
+    width: 220px;
+    height: 35px;
+
+    /* display: flex;
+    text-align: center;
+    vertical-align: middle;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; */
+
+    margin-bottom: 17px;
+    list-style: none;
+}
+/* .cate_nav_item::after {
+    content: "\f078";
+    display: inline-block;
+    font: var(--fa-font-solid);
+    font-weight: 900;
+    color: grey;
+
+    font-size: 0.75em;
+    line-height: -8px;
+    margin-left: 10px;
+} */
+a {
+    text-decoration: none;
+    color: black;
+}
+.cate_nav_bt {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 0;
+    background-color: white;
+    color: rgb(189, 185, 185);
+
+    align-self: center;
+    cursor: pointer;
+}
+.nonedeco_li {
+    list-style: none;
+}
+.cate_nav_item input {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+
+    position: absolute;
+}
+.cate_title {
+    width: 220px;
+
+    display: flex;
+    justify-content: space-between;
+}
+.cate_title > label {
+    padding-top: 5px;
 }
 #top_bt {
     width: 50px;
