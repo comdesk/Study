@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 목록</title>
+
+    <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="ico/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/mypage_frame.css">
+    <link rel="stylesheet" href="css/mypage_cart.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
+    <script src="https://kit.fontawesome.com/3a5b85a601.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="widthfix header_color">    
+            <div id="header">
+                <span>우리동네<br>장바구니</span>
+                <div id="gnb">
+                    <ul class="nav gnb">
+                        <li class="nav_item gnb_li"><a href="#" class="nav_text">가격비교</a></li>
+                        <li class="nav_item gnb_li"><a href="#" class="nav_text">커뮤니티</a> </li>
+                        <li class="nav_item gnb_li"><a href="#" class="nav_text">QNA</a></li>
+                    </ul>
+                </div>
+
+                <div id="info">
+                    <ul class="nav">
+                        <li class="nav_item"><span class="nav_text">개포동</span></li>
+                        <li class="nav_item"><button onclick=window.location.href='#' id="login_bt">로그인</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="widthfix">
+            <div id="container">
+                <div id="section">
+                    <div id="mypage_nav">
+                        <ul class="mypage_nav_ul">
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>마이페이지</span></a></li>
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>개인정보 수정</span></a></li>
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>장바구니 목록</span></a></li>
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>찜한 상품</span></a></li>
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>즐겨찾는 마트</span></a></li>
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>내 활동 내역</span></a></li>
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>키워드알림</span></a></li>
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>활동알림</span></a></li>
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>채팅 내역</span></a></li>
+                            <li class="mypage_nav_li"><a href="#" class="nav_text"><span>북마크 내역</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div id="mypage_article">
+                        <div class="mypage_article_title">
+                            <h3>장바구니 목록</h3> <!--제목 변경-->
+                        </div>
+                        <div class="mypage_article_content">
+                            <div class="mycart_table_div">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <td>
+                                                <div class="cart_tbl_date">
+                                                    <span>장바구니</span>
+                                                    <input type="date" data-placeholder="날짜 선택" required
+                                                    aria-required="true" name="cartDate" id="cartDate">
+                                                </div>
+                                            </td>
+                                            <th scope="col"><span>이마트 A점</span></th>
+                                            <th scope="col"><span>이마트 B점</span></th>
+                                            <th scope="col"><span>이마트 C점</span></th>
+                                            <th scope="col"><span>이마트 D점</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="widthfix">        
+            <div id="footer">
+            
+            </div>
+        </div>
+    </div>
+</body>
+</html>
