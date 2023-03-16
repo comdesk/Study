@@ -54,7 +54,7 @@
         </c:forEach>
     </table>
 
-    <a href="/board/writeui.do">글쓰기</a>
+    <a href="/board/list.do">목록보기</a>
 
 </body>
 

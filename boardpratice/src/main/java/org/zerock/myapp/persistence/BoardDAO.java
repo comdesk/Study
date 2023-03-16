@@ -1,20 +1,23 @@
 package org.zerock.myapp.persistence;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.sql.DataSource;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.zerock.myapp.domain.BoardDTO;
 import org.zerock.myapp.domain.PageTO;
+import org.zerock.myapp.mapper.BoardMapper;
 
 import lombok.Cleanup;
 import lombok.extern.log4j.Log4j2;
@@ -22,23 +25,17 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class BoardDAO {
 	
-	private DataSource dataSource;
+	private SqlSessionFactory factory;
 	
-	public BoardDAO() throws NamingException {
+	public BoardDAO() throws NamingException, IOException {
 		
 		log.trace("Default Constructor invoked.");
 		
-			String prefix = "java:comp/env/";
-			String name = "jdbc/OracleCloudATPWithDriverSpy";
-			
-			Context ctx = new InitialContext();
-			Object obj = ctx.lookup(prefix + name);
-			
-			Objects.nonNull(obj);
-			
-			this.dataSource = (DataSource) obj;
-
+		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
 		
+		InputStream is = Resources.getResourceAsStream("mybatis-context.xml");
+		
+		this.factory = builder.build(is);		
 	} //default constructor
 	
 	//목록 보기
@@ -46,31 +43,11 @@ public class BoardDAO {
 		
 		log.trace("list() invoked.");
 		
-		List<BoardDTO> list = new ArrayList<>();
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		final String sql = "SELECT num, author, title, content, to_char(writeday, 'YYYY/MM/DD') writeday, readcnt, repRoot, repStep, repIndent FROM board order by repRoot desc, repStep asc";
-		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		@Cleanup ResultSet rs = pstmt.executeQuery();
-		
-		while(rs.next()) {
-			int num = rs.getInt("num");
-			String author = rs.getString("author");
-			String title = rs.getString("title");
-			String content = rs.getString("content");
-			String writeday = rs.getString("writeday");
-			int readcnt = rs.getInt("readcnt");
-			int repRoot = rs.getInt("repRoot");
-			int repStep = rs.getInt("repStep");
-			int repIndent = rs.getInt("repIndent");
-			
-			BoardDTO data = new BoardDTO(num, author, title, content, writeday, readcnt, repRoot, repStep, repIndent);
-			
-			list.add(data);
-		}
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		List<BoardDTO> list = mapper.selectAll();
 		
 		return list;
 	} //list
@@ -80,17 +57,11 @@ public class BoardDAO {
 		
 		log.trace("write(_title, _author, _content) invoked.");
 		
-		final String sql = "INSERT INTO board (num, title, author, content, repRoot, repStep, repIndent) values (board_seq.NEXTVAL, ?, ?, ?, board_seq.CURRVAL, 0, 0)";
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setString(1, _title);
-		pstmt.setString(2, _author);
-		pstmt.setString(3, _content);
-		
-		int n = pstmt.executeUpdate();
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		int n = mapper.insertBoard(_title, _author, _content);
 	} //write
 	
 	//조회수 1 증가
@@ -98,15 +69,11 @@ public class BoardDAO {
 		
 		log.trace("readCount(_num) invoked.");
 		
-		final String sql = "UPDATE board SET readcnt = (readcnt + 1) WHERE num = ?";
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setInt(1, Integer.parseInt(_num));
-		int n = pstmt.executeUpdate();		
-		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		int n = mapper.updateReadCount(_num);
 	} //readCount
 	
 	//글 자세히 보기
@@ -116,33 +83,11 @@ public class BoardDAO {
 		
 		readCount(_num);
 		
-		String sql = "Select * FROM board WHERE num = ?";
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setInt(1, Integer.parseInt(_num));
-		
-		@Cleanup ResultSet rs = pstmt.executeQuery();
-		
-		BoardDTO data = new BoardDTO();
-		
-		if(rs.next()) {
-			int num = rs.getInt("num");
-			String author = rs.getString("author");
-			String title = rs.getString("title");
-			String content = rs.getString("content");
-			String writeday = rs.getString("writeday");
-			int readcnt = rs.getInt("readcnt");
-			
-			data.setNum(num);
-			data.setAuthor(author);
-			data.setTitle(title);
-			data.setContent(content);
-			data.setWriteday(writeday);
-			data.setReadcnt(readcnt);
-		} //if
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		BoardDTO data = mapper.selectOneDTO(_num);
 		
 		return data;
 	} //retrieve
@@ -152,18 +97,11 @@ public class BoardDAO {
 		
 		log.trace("update(_num, _author, _title, _content) invoked.");
 		
-		final String sql = "UPDATE board SET author = ?, title = ?, content = ? WHERE num = ?";
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setString(1, _author);
-		pstmt.setString(2, _title);
-		pstmt.setString(3, _content);
-		pstmt.setInt(4, Integer.parseInt(_num));
-		
-		int n = pstmt.executeUpdate();		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		int n = mapper.updateBoard(_num, _author, _title, _content);
 	} //update
 	
 	//글 삭제하기
@@ -171,14 +109,11 @@ public class BoardDAO {
 		
 		log.trace("delete(_num) invoked.");
 		
-		final String sql = "DELETE FROM board WHERE num = ?";
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setInt(1, Integer.parseInt(_num));
-		int n = pstmt.executeUpdate();
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		int n = mapper.deleteBoard(_num);
 	} //delete
 	
 	//글 검색하기
@@ -186,43 +121,11 @@ public class BoardDAO {
 		
 		log.trace("search(_searchName, _searchValue) invoked.");
 		
-		String sql = "SELECT num, author, title, content, to_char(writeday, 'YYYY/MM/DD') writeday, readcnt FROM board";
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		if(_searchName.equals("title")) {
-			sql += " WHERE title LIKE ?";
-		} else {
-			sql += " WHERE author LIKE ?";
-		}
-		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setString(1, "%" + _searchValue + "%");
-		
-		@Cleanup ResultSet rs = pstmt.executeQuery();
-		
-		List<BoardDTO> list = new ArrayList<>();
-		
-		while(rs.next()) {
-			int num = rs.getInt("num");
-			String author = rs.getString("author");
-			String title = rs.getString("title");
-			String content = rs.getString("content");
-			String writeday = rs.getString("writeday");
-			int readcnt = rs.getInt("readcnt");
-			
-			BoardDTO data = new BoardDTO();
-			
-			data.setNum(num);
-			data.setAuthor(author);
-			data.setTitle(title);
-			data.setContent(content);
-			data.setWriteday(writeday);
-			data.setReadcnt(readcnt);
-			
-			list.add(data);
-		} //while
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		List<BoardDTO> list = mapper.searchBoard(_searchName, _searchValue);
 		
 		return list;
 	} //search
@@ -232,28 +135,13 @@ public class BoardDAO {
 		
 		log.trace("replyui(_num) invoked.");
 		
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
+		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		BoardDTO data = mapper.replySelect(_num);
+		
 		String sql = "SELECT * FROM board WHERE num = ?";
-		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, Integer.parseInt(_num));
-		
-		@Cleanup ResultSet rs = pstmt.executeQuery();
-		
-		BoardDTO data = new BoardDTO();
-		
-		if(rs.next()) {
-			data.setNum(rs.getInt("num"));
-			data.setAuthor(rs.getString("author"));
-			data.setTitle(rs.getString("title"));
-			data.setContent(rs.getString("content"));
-			data.setWriteday(rs.getString("writeday"));
-			data.setReadcnt(rs.getInt("readcnt"));
-			data.setRepRoot(rs.getInt("repRoot"));
-			data.setRepStep(rs.getInt("repStep"));
-			data.setRepIndent(rs.getInt("repIndent"));			
-		} //if
 		
 		return data;
 	} //replyui
@@ -263,16 +151,11 @@ public class BoardDAO {
 		
 		log.info("makeReply(_root, _step) invoked.");
 		
-		String sql = "UPDATE board SET repStep = repStep + 1 WHERE repRoot = ? AND repStep > ?";
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setInt(1, Integer.parseInt(_root));
-		pstmt.setInt(2, Integer.parseInt(_step));
-		
-		int n = pstmt.executeUpdate();
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		int n = mapper.updateRepStep(_root, _step);
 	} //makeReply
 	
 	//답변달기
@@ -283,20 +166,11 @@ public class BoardDAO {
 		//repStep + 1
 		this.makeReply(_repRoot, _repStep);
 		
-		String sql = "INSERT INTO board(num, title, author, content, repRoot, repStep, repIndent) values (board_seq.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		pstmt.setString(1, _title);
-		pstmt.setString(2, _author);
-		pstmt.setString(3, _content);
-		pstmt.setInt(4, Integer.parseInt(_repRoot));
-		pstmt.setInt(5, Integer.parseInt(_repStep) + 1);
-		pstmt.setInt(6, Integer.parseInt(_repIndent) + 1);
-		
-		int n = pstmt.executeUpdate();		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		int n = mapper.insertReply(_num, _title, _author, _content, _repRoot, _repStep, _repIndent);	
 	} //reply
 	
 	//페이징 처리: 전체 레코드 개수 구하기
@@ -306,18 +180,12 @@ public class BoardDAO {
 		
 		int count = 0;
 		
-		String sql = "SELECT count(num) FROM board";
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		@Cleanup ResultSet rs = pstmt.executeQuery();
-		
-		if(rs.next()) {
-			count = rs.getInt(1);
-		} //if
-		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		count = mapper.totalCountPage();
+
 		return count;
 	} //totalCount
 	
@@ -328,41 +196,14 @@ public class BoardDAO {
 		
 		PageTO to = new PageTO();
 		int totalCount = totalCount();
-		
-		List<BoardDTO> list = new ArrayList<>();
-		
-		String sql = "SELECT num, author, title, content, to_char(writeday, 'YYYY/MM/DD') writeday, readcnt, repRoot, repStep, repIndent FROM board order by repRoot desc, repStep asc";;
-		
-		@Cleanup Connection conn = this.dataSource.getConnection();
-		
-		@Cleanup PreparedStatement pstmt = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-		
-		@Cleanup ResultSet rs = pstmt.executeQuery();
-		
+				
 		int perPage = to.getPerPage();
 		
-		int skip = (curPage - 1) * perPage;
-		if(skip > 0) {
-			rs.absolute(skip);
-			log.trace("rs 커서 위치: {}", rs.getRow());
-		} //if
+		@Cleanup
+		SqlSession sqlSession = factory.openSession();
 		
-		for(int i = 0; i < perPage && rs.next(); i++) {
-			log.trace("rs.next() 커서 위치: {}", rs.getRow());
-			
-			int num = rs.getInt("num");
-			String author = rs.getString("author");
-			String title = rs.getString("title");
-			String content = rs.getString("content");
-			String writeday = rs.getString("writeday");
-			int readcnt = rs.getInt("readcnt");
-			int repRoot = rs.getInt("repRoot");
-			int repStep = rs.getInt("repStep");
-			int repIndent = rs.getInt("repIndent");
-			
-			BoardDTO data = new BoardDTO(num, author, title, content, writeday, readcnt, repRoot, repStep, repIndent);
-			list.add(data);
-		} //for
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		List<BoardDTO> list = mapper.selectPage(curPage, perPage);
 		
 		to.setList(list);
 		to.setCurPage(curPage);

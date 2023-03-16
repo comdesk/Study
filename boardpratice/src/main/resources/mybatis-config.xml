@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="UNPOOLED">
+                <!-- <property name="driver" value="oracle.jdbc.OracleDriver"/>
+                <property name="url" value="jdbc:oracle:thin:@iabobij3bs5jnh34_high?TNS_ADMIN=C:/opt/OracleCloudWallet/VFX"/> -->
+                
+                <property name="driver" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+                <property name="url" value="jdbc:log4jdbc:oracle:thin:@iabobij3bs5jnh34_high?TNS_ADMIN=C:/opt/OracleCloudWallet/VFX" />
+                <property name="username" value="REPRI" />
+                <property name="password" value="Oracle12345678" />
+
+                <property name="defaultNetworkTimeout" value="2000" />
+                <property name="driver.encoding" value="UTF8" />
+            </dataSource>
+        </environment>
+
+        <environment id="production">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <!-- <property name="driver" value="oracle.jdbc.OracleDriver"/>
+                <property name="url" value="jdbc:oracle:thin:@iabobij3bs5jnh34_high?TNS_ADMIN=C:/opt/OracleCloudWallet/VFX"/> -->
+
+                <property name="driver" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+                <property name="url" value="jdbc:log4jdbc:oracle:thin:@iabobij3bs5jnh34_high?TNS_ADMIN=C:/opt/OracleCloudWallet/VFX"/>
+                
+                <property name="username" value="REPRI"/>
+                <property name="password" value="Oracle12345678"/>
+
+                <property name="poolMaximumActiveConnections" value="10" />
+                <property name="poolMaximumIdleConnections" value="3" />
+                <property name="poolTimeToWait" value="20000" />
+                <property name="poolPingQuery" value="SELECT 1 FROM dual" />
+                <property name="poolPingEnabled" value="true" />
+                <property name="poolPingConnectionsNotUsedFor" value="60000" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+    	<mapper class="org.zerock.myapp.mapper.BoardMapper" />
+        <!-- <package name="" />      -->
+    
+        <mapper resource="mappers/BoardMapper.xml" />
+        <!-- <mapper url=""/> -->        
+    </mappers>
+</configuration>

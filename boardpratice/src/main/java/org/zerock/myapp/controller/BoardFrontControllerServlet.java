@@ -61,8 +61,6 @@ public class BoardFrontControllerServlet extends HttpServlet {
 				command = new BoardWriteCommand();
 				command.execute(req, res);
 				target = "/list.do";
-				res.sendRedirect("/board/list.do");
-				return;
 			} //if			
 			
 			if(comm.equals("/retrieve.do")) {
@@ -101,8 +99,14 @@ public class BoardFrontControllerServlet extends HttpServlet {
 				target = ("/list.do");
 			} //if
 			
-			RequestDispatcher dis = req.getRequestDispatcher(target);
-			dis.forward(req, res);
+			if(target.matches(".*\\.jsp")){
+				log.trace("RequestDispatcher");
+				RequestDispatcher dis = req.getRequestDispatcher(target);
+				dis.forward(req, res);
+			} else {
+				log.trace("Send Redirection");
+				res.sendRedirect("/board"+target);
+			} //if-else			
 		} catch(Exception e) {
 			throw new ServletException(e);
 		} //try-catch		
