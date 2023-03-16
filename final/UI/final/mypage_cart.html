@@ -60,23 +60,47 @@
                         </div>
                         <div class="mypage_article_content">
                             <div class="mycart_table_div">
-                                <table>
+                                <table id="mycart_tbl">
                                     <thead>
                                         <tr>
-                                            <td>
+                                            <th scope="col">
                                                 <div class="cart_tbl_date">
                                                     <span>장바구니</span>
                                                     <input type="date" data-placeholder="날짜 선택" required
                                                     aria-required="true" name="cartDate" id="cartDate">
                                                 </div>
-                                            </td>
+                                            </th>
                                             <th scope="col"><span>이마트 A점</span></th>
                                             <th scope="col"><span>이마트 B점</span></th>
                                             <th scope="col"><span>이마트 C점</span></th>
                                             <th scope="col"><span>이마트 D점</span></th>
                                         </tr>
                                     </thead>
-                                    <tbody></tbody>
+                                    <tbody>     <!--동적-->
+                                        <tr>
+                                            <td>
+                                                <div class="cart_goods_list">
+                                                    <div>
+                                                        <a href="#"><img src="https://picsum.photos/id/684/50/50"></a>
+                                                    </div>
+                                                    <div class="cart_title_count">
+                                                        <a href="#" class="a_black_text" ><span>오리온 포카칩 오리지널 (66g)</span></a>
+                                                        <div class="count_bt_delete">
+                                                            <div class="count_bt">
+                                                                <button type="button" aria-label="수량내리기" disabled></button>
+                                                                <div>1</div>
+                                                                <button type="button" aria-label="수량올리기"></button>
+                                                            </div>
+                                                            <div>
+                                                                <button type="button" aria-label="장바구니삭제"></button>
+                                                            </div>
+                                                        </div>                                                            
+                                                    </div>                                                    
+                                                </div>
+                                            </td>
+                                            
+                                        </tr>
+                                    </tbody>
                                     <tfoot></tfoot>
                                 </table>
                                 

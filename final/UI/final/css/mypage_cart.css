@@ -1,6 +1,21 @@
 @charset "utf-8";
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 
+#mycart_tbl {
+    width: 100%;
+
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+.cart_tbl_date {
+    display: flex;
+    justify-content: space-around;
+}
+.cart_tbl_date > span {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
 #cartDate {
     position: relative;
     width: 100px;
@@ -38,4 +53,23 @@
     font-family: 'Jeju Gothic', sans-serif;
     color: gray;
     font-size: 14px;
+}
+.cart_goods_list{
+    display: flex;
+}
+.cart_title_count {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    justify-content: space-between;
+}
+.count_bt {
+    display: flex;
+}
+.count_bt_delete {
+    display: flex;
+}
+.a_black_text {
+    text-decoration: none;
+    color: black;
 }
