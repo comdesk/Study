@@ -56,14 +56,14 @@
 
                     <div id="mypage_article">
                         <div class="mypage_article_title">
-                            <h3>장바구니 목록</h3> <!--제목 변경-->
+                            <h3>장바구니 목록</h3>
                         </div>
                         <div class="mypage_article_content">
                             <div class="mycart_table_div">
                                 <table id="mycart_tbl">
                                     <thead>
                                         <tr>
-                                            <th scope="col">
+                                            <th scope="col" colspan="2">
                                                 <div class="cart_tbl_date">
                                                     <span>장바구니</span>
                                                     <input type="date" data-placeholder="날짜 선택" required
@@ -78,7 +78,7 @@
                                     </thead>
                                     <tbody>     <!--동적-->
                                         <tr>
-                                            <td>
+                                            <td colspan="2">
                                                 <div class="cart_goods_list">
                                                     <div>
                                                         <a href="#"><img src="https://picsum.photos/id/684/50/50"></a>
@@ -87,18 +87,33 @@
                                                         <a href="#" class="a_black_text" ><span>오리온 포카칩 오리지널 (66g)</span></a>
                                                         <div class="count_bt_delete">
                                                             <div class="count_bt">
-                                                                <button type="button" aria-label="수량내리기" disabled></button>
+                                                                <button type="button" aria-label="수량내리기" class="count_minus_plus_bt count_minus_bt" disabled></button>
                                                                 <div>1</div>
-                                                                <button type="button" aria-label="수량올리기"></button>
+                                                                <button type="button" aria-label="수량올리기" class="count_minus_plus_bt count_plus_bt"></button>
                                                             </div>
-                                                            <div>
-                                                                <button type="button" aria-label="장바구니삭제"></button>
+                                                            <div class="delete_bt_div">
+                                                                <button type="button" aria-label="장바구니삭제" class="delete_bt"></button>
                                                             </div>
                                                         </div>                                                            
                                                     </div>                                                    
                                                 </div>
                                             </td>
-                                            
+                                            <td>
+                                                <span>2600</span>
+                                                <span>원</span>                                                
+                                            </td>   
+                                            <td>
+                                                <span>2600</span>
+                                                <span>원</span>   
+                                            </td>
+                                            <td>
+                                                <span>2600</span>
+                                                <span>원</span>   
+                                            </td>
+                                            <td>
+                                                <span>2600</span>
+                                                <span>원</span>  
+                                            </td>                                         
                                         </tr>
                                     </tbody>
                                     <tfoot></tfoot>

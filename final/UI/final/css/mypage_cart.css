@@ -7,6 +7,9 @@
     border-collapse: collapse;
     border: 1px solid black;
 }
+th, td {
+    border: 1px solid black;
+}
 .cart_tbl_date {
     display: flex;
     justify-content: space-around;
@@ -56,20 +59,67 @@
 }
 .cart_goods_list{
     display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 .cart_title_count {
     display: flex;
     flex-direction: column;
     height: 50px;
     justify-content: space-between;
+    /* overflow: hidden;
+    flex-wrap: wrap; */
+}
+.cart_title_count a {
+    white-space: normal;
 }
 .count_bt {
+    width: 70px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding-top: 4px;
+
     display: flex;
+    justify-content: space-around;
 }
 .count_bt_delete {
     display: flex;
+    justify-content: end;
 }
 .a_black_text {
     text-decoration: none;
     color: black;
+}
+.count_minus_plus_bt {
+    display: inline-flex;
+    width: 14px;
+    height: 14px;
+    border: 0;
+    color: transparent;
+    background-size: cover;
+    background-color: transparent;
+}
+.count_minus_bt {
+    background-image: url(../imgs/minus-xs-svgrepo-gray.svg);
+    /* background-image: url(../imgs/minus-xs-svgrepo-black.svg); */
+}
+.count_plus_bt {
+    background-image: url(../imgs/plus-xs-svgrepo-com.svg);
+}
+.delete_bt_div {
+    margin-left: 15px;
+
+    display: flex;
+    align-items: center;
+}
+.delete_bt {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    border: 0.1px solid lightgray;
+    border-radius: 50%;
+
+    background-color: rgb(233, 228, 228);
+    background-size: cover;
+    background-image: url(../imgs/cross-small-svgrepo-com\ \(2\).svg);
 }
