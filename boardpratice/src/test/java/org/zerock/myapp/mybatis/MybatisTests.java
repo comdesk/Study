@@ -20,7 +20,6 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Timeout;
 import org.zerock.myapp.domain.BoardDTO;
-import org.zerock.myapp.domain.PageTO;
 import org.zerock.myapp.mapper.BoardMapper;
 
 import lombok.Cleanup;
@@ -293,9 +292,30 @@ public class MybatisTests {
 		
 		int total = mapper.totalCountPage();
 		
-		log.info("total", total);
+		log.info("total: {}", total);
 		
 	} //totalCount
+	
+//	@Disabled
+	@Test
+	@Order(12)
+	@DisplayName("테스트12: selectPage 테스트")
+	@Timeout(value=4, unit=TimeUnit.SECONDS)
+	void selectPage() {
+		log.trace("selectPage() invoked.");
+
+		@Cleanup
+		SqlSession sqlSession = this.factory.openSession();
+		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		log.info("mapper: {}", mapper);
+		
+		List<BoardDTO> page = mapper.selectPage(2, 5);
+		
+		log.info("page: {}", page);
+		
+	} //selectPage
 } //end class 
 
 
