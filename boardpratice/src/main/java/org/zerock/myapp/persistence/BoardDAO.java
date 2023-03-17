@@ -33,7 +33,7 @@ public class BoardDAO {
 		
 		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
 		
-		InputStream is = Resources.getResourceAsStream("mybatis-context.xml");
+		InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
 		
 		this.factory = builder.build(is);		
 	} //default constructor
@@ -44,7 +44,7 @@ public class BoardDAO {
 		log.trace("list() invoked.");
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		List<BoardDTO> list = mapper.selectAll();
@@ -58,7 +58,7 @@ public class BoardDAO {
 		log.trace("write(_title, _author, _content) invoked.");
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		int n = mapper.insertBoard(_title, _author, _content);
@@ -70,7 +70,7 @@ public class BoardDAO {
 		log.trace("readCount(_num) invoked.");
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		int n = mapper.updateReadCount(_num);
@@ -84,7 +84,7 @@ public class BoardDAO {
 		readCount(_num);
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		BoardDTO data = mapper.selectOneDTO(_num);
@@ -98,7 +98,7 @@ public class BoardDAO {
 		log.trace("update(_num, _author, _title, _content) invoked.");
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		int n = mapper.updateBoard(_num, _author, _title, _content);
@@ -110,7 +110,7 @@ public class BoardDAO {
 		log.trace("delete(_num) invoked.");
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		int n = mapper.deleteBoard(_num);
@@ -122,7 +122,7 @@ public class BoardDAO {
 		log.trace("search(_searchName, _searchValue) invoked.");
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		List<BoardDTO> list = mapper.searchBoard(_searchName, _searchValue);
@@ -136,7 +136,7 @@ public class BoardDAO {
 		log.trace("replyui(_num) invoked.");
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		BoardDTO data = mapper.replySelect(_num);
@@ -152,7 +152,7 @@ public class BoardDAO {
 		log.info("makeReply(_root, _step) invoked.");
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		int n = mapper.updateRepStep(_root, _step);
@@ -167,7 +167,7 @@ public class BoardDAO {
 		this.makeReply(_repRoot, _repStep);
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		int n = mapper.insertReply(_num, _title, _author, _content, _repRoot, _repStep, _repIndent);	
@@ -181,7 +181,7 @@ public class BoardDAO {
 		int count = 0;
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		count = mapper.totalCountPage();
@@ -200,7 +200,7 @@ public class BoardDAO {
 		int perPage = to.getPerPage();
 		
 		@Cleanup
-		SqlSession sqlSession = factory.openSession();
+		SqlSession sqlSession = factory.openSession(true);
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		List<BoardDTO> list = mapper.selectPage(curPage, perPage);
@@ -208,7 +208,7 @@ public class BoardDAO {
 		to.setList(list);
 		to.setCurPage(curPage);
 		to.setTotalCount(totalCount);
-		
+
 		return to;
 	} //page
 } //end class

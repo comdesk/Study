@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.zerock.myapp.domain.BoardDTO;
 import org.zerock.myapp.exception.BusinessException;
-import org.zerock.myapp.persistence.BoardDAOFirst;
+import org.zerock.myapp.persistence.BoardDAO;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -23,7 +23,7 @@ public class BoardListCommand implements BoardCommand {
 		log.trace("execute({}, {}) invoked.", req, res);
 		
 		try {
-			BoardDAOFirst dao = new BoardDAOFirst();
+			BoardDAO dao = new BoardDAO();
 			
 			List<BoardDTO> list = dao.list();
 			

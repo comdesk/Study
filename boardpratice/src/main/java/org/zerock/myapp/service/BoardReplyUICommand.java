@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.zerock.myapp.domain.BoardDTO;
 import org.zerock.myapp.exception.BusinessException;
-import org.zerock.myapp.persistence.BoardDAOFirst;
+import org.zerock.myapp.persistence.BoardDAO;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -23,7 +23,7 @@ public class BoardReplyUICommand implements BoardCommand {
 		try {
 			String num = req.getParameter("num");
 			
-			BoardDAOFirst dao = new BoardDAOFirst();
+			BoardDAO dao = new BoardDAO();
 			BoardDTO data = dao.replyui(num);
 			
 			req.setAttribute("replyui", data);

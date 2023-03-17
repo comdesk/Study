@@ -9,6 +9,6 @@ public class PageTO {	//=DTO
 	
 	List<BoardDTO> list;
 	int curPage;
-	int perPage = 5;
+	int perPage = 10;
 	int totalCount;
 } //end class

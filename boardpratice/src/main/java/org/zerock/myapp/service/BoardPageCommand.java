@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.zerock.myapp.domain.PageTO;
 import org.zerock.myapp.exception.BusinessException;
-import org.zerock.myapp.persistence.BoardDAOFirst;
+import org.zerock.myapp.persistence.BoardDAO;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -27,7 +27,7 @@ public class BoardPageCommand implements BoardCommand {
 				curPage = Integer.parseInt(req.getParameter("curPage"));
 			} //if			
 			
-			BoardDAOFirst dao = new BoardDAOFirst();
+			BoardDAO dao = new BoardDAO();
 			
 			PageTO list = dao.page(curPage);
 			
