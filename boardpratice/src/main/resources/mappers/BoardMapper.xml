@@ -63,7 +63,7 @@
 
     <insert id="insertReply">
       INSERT INTO board(num, title, author, content, repRoot, repStep, repIndent) 
-      values (board_seq.NEXTVAL, #{_title}, #{_author}, #{_content}, #{_repRoot}, #{_repStep}, #{_repIndent})
+      values (board_seq.NEXTVAL, #{_title}, #{_author}, #{_content}, #{_repRoot}, #{_repStep}+1, #{_repIndent}+1)
     </insert>
 
     <select id="totalCountPage" resultType="int">
@@ -77,6 +77,6 @@
                   FROM board 
                   ORDER BY repRoot DESC, repStep ASC)
             )
-      WHERE RN BETWEEN ((curPage-1)*perPage)+1 AND curPage*perPage;
+      WHERE RN BETWEEN ((#{curPage}-1)*#{perPage})+1 AND #{curPage}*#{perPage}
     </select>
 </mapper>
