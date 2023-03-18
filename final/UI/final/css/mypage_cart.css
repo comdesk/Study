@@ -3,13 +3,26 @@
 
 #mycart_tbl {
     width: 100%;
+    margin-bottom: 30px;
 
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 1px solid #8e918f;
+    text-align: center;
 }
 th, td {
-    border: 1px solid black;
+    border: 1px solid #8e918f;
 }
+th {
+    width: 121px;
+    padding: 10px 5px;
+
+    background-color: #dbe5df;
+    overflow: hidden;
+}
+thead > tr > th {
+    border-bottom: 2px solid #8e918f;
+}
+
 .cart_tbl_date {
     display: flex;
     justify-content: space-around;
@@ -23,7 +36,7 @@ th, td {
     position: relative;
     width: 100px;
     height: 20px;
-    border: 1px solid black;
+    border: 1px solid #8e918f;
     border-radius: 5px;
     padding: 0 16px;
 
@@ -57,27 +70,42 @@ th, td {
     color: gray;
     font-size: 14px;
 }
+.td_cart_goods_list {
+    background-color: #fbfdfa;
+}
 .cart_goods_list{
     display: flex;
     justify-content: space-around;
+    align-content: center;
     margin-top: 20px;
+    margin-bottom: 20px;
+}
+.cart_goods_image {
+    width: 64px;
+    height: 64px;
 }
 .cart_title_count {
     display: flex;
     flex-direction: column;
-    height: 50px;
+    width: 205px;
+    min-height: 70px;
     justify-content: space-between;
-    /* overflow: hidden;
-    flex-wrap: wrap; */
+    align-self: center;
+    overflow: hidden;
+    /* flex-wrap: wrap; */
+}
+.cart_title_count span {
+    margin-bottom: 10px;
 }
 .cart_title_count a {
     white-space: normal;
 }
 .count_bt {
     width: 70px;
-    border: 1px solid black;
+    border: 1px solid #8e918f;
     border-radius: 4px;
     padding-top: 4px;
+    background-color: white;
 
     display: flex;
     justify-content: space-around;
@@ -95,9 +123,11 @@ th, td {
     width: 14px;
     height: 14px;
     border: 0;
+
     color: transparent;
     background-size: cover;
     background-color: transparent;
+    cursor: pointer;
 }
 .count_minus_bt {
     background-image: url(../imgs/minus-xs-svgrepo-gray.svg);
@@ -116,10 +146,48 @@ th, td {
     display: inline-flex;
     width: 20px;
     height: 20px;
-    border: 0.1px solid lightgray;
+    border: 0.1px solid #8e918f;
     border-radius: 50%;
 
     background-color: rgb(233, 228, 228);
     background-size: cover;
     background-image: url(../imgs/cross-small-svgrepo-com\ \(2\).svg);
+    cursor: pointer;
 }
+tfoot > tr {
+    height: 80px;
+
+    background-color: #bfc9c3;
+}
+tr[aria-label="합계"] {
+    border-top: 2px solid #8e918f;
+}
+#mycart_tbl_button {
+    margin-bottom: 50px;
+
+    display: flex;
+    justify-content: end;
+}
+#mycart_tbl_button > input {
+    background-color: #cee9dd;
+}
+#mycart_tbl_button > button {
+    margin-left: 15px;
+}
+.mycart_tbl_bt {
+    width: 140px;
+    height: 40px;
+    border: 1px solid #8e918f;
+    border-radius: 5px;
+
+    font-family: 'Jeju Gothic', sans-serif;
+    background-color: white;
+    cursor: pointer;
+}
+.mycart_tbl_bt:active {
+    top: 1px;
+    border-color: rgba(0,0,0,0.34) rgba(0,0,0,0.21) rgba(0,0,0,0.21);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.89),
+                0 1px rgba(0,0,0,0.05) inset;
+    position: relative;
+  }

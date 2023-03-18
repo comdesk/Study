@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>장바구니 목록</title>
+    <title>WeCart</title>
 
     <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon">
     <link rel="icon" href="ico/favicon.ico" type="image/x-icon">
@@ -58,68 +58,250 @@
                         <div class="mypage_article_title">
                             <h3>장바구니 목록</h3>
                         </div>
+
                         <div class="mypage_article_content">
                             <div class="mycart_table_div">
-                                <table id="mycart_tbl">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" colspan="2">
-                                                <div class="cart_tbl_date">
-                                                    <span>장바구니</span>
-                                                    <input type="date" data-placeholder="날짜 선택" required
-                                                    aria-required="true" name="cartDate" id="cartDate">
-                                                </div>
-                                            </th>
-                                            <th scope="col"><span>이마트 A점</span></th>
-                                            <th scope="col"><span>이마트 B점</span></th>
-                                            <th scope="col"><span>이마트 C점</span></th>
-                                            <th scope="col"><span>이마트 D점</span></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>     <!--동적-->
-                                        <tr>
-                                            <td colspan="2">
-                                                <div class="cart_goods_list">
-                                                    <div>
-                                                        <a href="#"><img src="https://picsum.photos/id/684/50/50"></a>
+                                <form action="#" method="get">
+                                    <table id="mycart_tbl">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" colspan="2">
+                                                    <div class="cart_tbl_date">
+                                                        <span>장바구니</span>
+                                                        <input type="date" data-placeholder="날짜 선택" required
+                                                        aria-required="true" name="cartDate" id="cartDate">
                                                     </div>
-                                                    <div class="cart_title_count">
-                                                        <a href="#" class="a_black_text" ><span>오리온 포카칩 오리지널 (66g)</span></a>
-                                                        <div class="count_bt_delete">
-                                                            <div class="count_bt">
-                                                                <button type="button" aria-label="수량내리기" class="count_minus_plus_bt count_minus_bt" disabled></button>
-                                                                <div>1</div>
-                                                                <button type="button" aria-label="수량올리기" class="count_minus_plus_bt count_plus_bt"></button>
-                                                            </div>
-                                                            <div class="delete_bt_div">
-                                                                <button type="button" aria-label="장바구니삭제" class="delete_bt"></button>
-                                                            </div>
-                                                        </div>                                                            
-                                                    </div>                                                    
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span>2600</span>
-                                                <span>원</span>                                                
-                                            </td>   
-                                            <td>
-                                                <span>2600</span>
-                                                <span>원</span>   
-                                            </td>
-                                            <td>
-                                                <span>2600</span>
-                                                <span>원</span>   
-                                            </td>
-                                            <td>
-                                                <span>2600</span>
-                                                <span>원</span>  
-                                            </td>                                         
-                                        </tr>
-                                    </tbody>
-                                    <tfoot></tfoot>
-                                </table>
-                                
-                            </div>
+                                                </th>
+                                                <th scope="col"><span>GS더프레시아산탕정점</span></th>
+                                                <th scope="col"><span>GS더프레시대전도마점</span></th>
+                                                <th scope="col"><span>GS더프레시안양메가트리아점</span></th>
+                                                <th scope="col"><span>(주)농협하나로유통 광주점</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>     <!--동적-->
+                                            <tr>
+                                                <td colspan="2" class="td_cart_goods_list">
+                                                    <div class="cart_goods_list">
+                                                        <div>
+                                                            <a href="#"><img src="https://picsum.photos/id/684/100/100" class="cart_goods_image"></a>
+                                                        </div>
+                                                        <div class="cart_title_count">
+                                                            <a href="#" class="a_black_text" ><span>오리온 포카칩 오리지널 어니언맛 치즈맛 불고기맛(66g)</span></a>
+                                                            <div class="count_bt_delete">
+                                                                <div class="count_bt">
+                                                                    <button type="button" aria-label="수량내리기" class="count_minus_plus_bt count_minus_bt" disabled></button>
+                                                                    <div>1</div>
+                                                                    <button type="button" aria-label="수량올리기" class="count_minus_plus_bt count_plus_bt"></button>
+                                                                </div>
+                                                                <div class="delete_bt_div">
+                                                                    <button type="button" aria-label="장바구니삭제" class="delete_bt"></button>
+                                                                </div>
+                                                            </div>                                                            
+                                                        </div>                                                    
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span>12,600</span>
+                                                    <span>원</span>                                                
+                                                </td>   
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>  
+                                                </td>                                         
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="td_cart_goods_list">
+                                                    <div class="cart_goods_list">
+                                                        <div>
+                                                            <a href="#"><img src="https://picsum.photos/id/684/100/100" class="cart_goods_image"></a>
+                                                        </div>
+                                                        <div class="cart_title_count">
+                                                            <a href="#" class="a_black_text" ><span>오리온 포카칩 오리지널 어니언맛 치즈맛 불고기맛(66g)</span></a>
+                                                            <div class="count_bt_delete">
+                                                                <div class="count_bt">
+                                                                    <button type="button" aria-label="수량내리기" class="count_minus_plus_bt count_minus_bt" disabled></button>
+                                                                    <div>1</div>
+                                                                    <button type="button" aria-label="수량올리기" class="count_minus_plus_bt count_plus_bt"></button>
+                                                                </div>
+                                                                <div class="delete_bt_div">
+                                                                    <button type="button" aria-label="장바구니삭제" class="delete_bt"></button>
+                                                                </div>
+                                                            </div>                                                            
+                                                        </div>                                                    
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>                                                
+                                                </td>   
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>  
+                                                </td>                                         
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="td_cart_goods_list">
+                                                    <div class="cart_goods_list">
+                                                        <div>
+                                                            <a href="#"><img src="https://picsum.photos/id/684/100/100" class="cart_goods_image"></a>
+                                                        </div>
+                                                        <div class="cart_title_count">
+                                                            <a href="#" class="a_black_text" ><span>오리온 포카칩 오리지널 어니언맛 치즈맛 불고기맛(66g)</span></a>
+                                                            <div class="count_bt_delete">
+                                                                <div class="count_bt">
+                                                                    <button type="button" aria-label="수량내리기" class="count_minus_plus_bt count_minus_bt" disabled></button>
+                                                                    <div>1</div>
+                                                                    <button type="button" aria-label="수량올리기" class="count_minus_plus_bt count_plus_bt"></button>
+                                                                </div>
+                                                                <div class="delete_bt_div">
+                                                                    <button type="button" aria-label="장바구니삭제" class="delete_bt"></button>
+                                                                </div>
+                                                            </div>                                                            
+                                                        </div>                                                    
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>                                                
+                                                </td>   
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>  
+                                                </td>                                         
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="td_cart_goods_list">
+                                                    <div class="cart_goods_list">
+                                                        <div>
+                                                            <a href="#"><img src="https://picsum.photos/id/684/100/100" class="cart_goods_image"></a>
+                                                        </div>
+                                                        <div class="cart_title_count">
+                                                            <a href="#" class="a_black_text" ><span>오리온 포카칩 오리지널 어니언맛 치즈맛 불고기맛(66g)</span></a>
+                                                            <div class="count_bt_delete">
+                                                                <div class="count_bt">
+                                                                    <button type="button" aria-label="수량내리기" class="count_minus_plus_bt count_minus_bt" disabled></button>
+                                                                    <div>1</div>
+                                                                    <button type="button" aria-label="수량올리기" class="count_minus_plus_bt count_plus_bt"></button>
+                                                                </div>
+                                                                <div class="delete_bt_div">
+                                                                    <button type="button" aria-label="장바구니삭제" class="delete_bt"></button>
+                                                                </div>
+                                                            </div>                                                            
+                                                        </div>                                                    
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>                                                
+                                                </td>   
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>  
+                                                </td>                                         
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="td_cart_goods_list">
+                                                    <div class="cart_goods_list">
+                                                        <div>
+                                                            <a href="#"><img src="https://picsum.photos/id/684/100/100" class="cart_goods_image"></a>
+                                                        </div>
+                                                        <div class="cart_title_count">
+                                                            <a href="#" class="a_black_text" ><span>오리온 포카칩 오리지널 어니언맛 치즈맛 불고기맛(66g)</span></a>
+                                                            <div class="count_bt_delete">
+                                                                <div class="count_bt">
+                                                                    <button type="button" aria-label="수량내리기" class="count_minus_plus_bt count_minus_bt" disabled></button>
+                                                                    <div>1</div>
+                                                                    <button type="button" aria-label="수량올리기" class="count_minus_plus_bt count_plus_bt"></button>
+                                                                </div>
+                                                                <div class="delete_bt_div">
+                                                                    <button type="button" aria-label="장바구니삭제" class="delete_bt"></button>
+                                                                </div>
+                                                            </div>                                                            
+                                                        </div>                                                    
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>                                                
+                                                </td>   
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>   
+                                                </td>
+                                                <td>
+                                                    <span>2,600</span>
+                                                    <span>원</span>  
+                                                </td>                                         
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <span>합계</span>
+                                                </td>
+                                                <td>
+                                                    <span>32,600</span>
+                                                    <span>원</span>  
+                                                </td>
+                                                <td>
+                                                    <span>12,600</span>
+                                                    <span>원</span>  
+                                                </td>
+                                                <td>
+                                                    <span>112,600</span>
+                                                    <span>원</span>  
+                                                </td>
+                                                <td>
+                                                    <span>22,600</span>
+                                                    <span>원</span>  
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+                                    <div id="mycart_tbl_button">
+                                        <input type="submit" value="현재 가격 비교" class="mycart_tbl_bt">
+
+                                        <button type="button" class="mycart_tbl_bt">장바구니 목록</button>
+                                    </div>
+                                </form>                        
+                            </div>                            
                         </div>
                     </div>
                 </div>
@@ -131,6 +313,10 @@
             
             </div>
         </div>
+
+        <a href="#TOP" id="top_bt" class="a_black_text">
+            <i class="fa-solid fa-arrow-up fa-lg"></i>
+        </a>
     </div>
 </body>
 </html>
