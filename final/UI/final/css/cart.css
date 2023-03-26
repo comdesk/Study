@@ -176,6 +176,7 @@ body {
 .cate_nav_item {
     width: 220px;
     height: 35px;
+    border-bottom: 1px solid light;
 
     /* display: flex;
     text-align: center;
@@ -215,8 +216,19 @@ a {
     align-self: center;
     cursor: pointer;
 }
+.cate_nav_ul {
+    display: block;
+    padding-left: 16px;
+}
 .nonedeco_li {
     list-style: none;
+}
+.details_cate {
+    margin: 15px;
+}
+/*상세 카테고리 선택됐을 때 클래스 추가해서 색 변경*/
+.nav_selected {
+    color: #7395ab;
 }
 .cate_nav_item input {
     visibility: hidden;
