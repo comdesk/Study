@@ -9,9 +9,11 @@
     <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon">
     <link rel="icon" href="ico/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/cart_frame.css">
+    <link rel="stylesheet" href="css/cart.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/3a5b85a601.js" crossorigin="anonymous"></script>
+    <script src="js/cart.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -37,10 +39,51 @@
 
         <div class="widthfix">    
             <div id="search">
-                <div class="cate">
-                    <i class="fa-solid fa-bars fa-2x"></i>
-                    <span>카테고리</span>    
+                <div>
+                    <div class="cate">
+                        <i class="fa-solid fa-bars fa-2x"></i>
+                        <span>카테고리</span>    
+                    </div>
+                    <div class="cate_hover_div">
+                        <ul class="cate_hover_ul nonedeco_li">
+                            <li class="cate_hover_li">
+                                곡물가공품
+                                <ul class="cate_in_ul nonedeco_li">
+                                    <li class="cate_in_li"><a href="#">견과류</a></li>
+                                    <li class="cate_in_li"><a href="#">국수</a></li>
+                                    <li class="cate_in_li"><a href="#">냉동만두</a></li>
+                                    <li class="cate_in_li"><a href="#">당면</a></li>
+                                    <li class="cate_in_li"><a href="#">두부</a></li>
+                                    <li class="cate_in_li"><a href="#">라면</a></li>
+                                    <li class="cate_in_li"><a href="#">밀가루</a></li>
+                                    <li class="cate_in_li"><a href="#">부침가루</a></li>
+                                    <li class="cate_in_li"><a href="#">빵</a></li>
+                                    <li class="cate_in_li"><a href="#">스프</a></li>
+                                    <li class="cate_in_li"><a href="#">식빵</a></li>
+                                    <li class="cate_in_li"><a href="#">시리얼</a></li>
+                                    <li class="cate_in_li"><a href="#">즉석국</a></li>
+                                    <li class="cate_in_li"><a href="#">즉석덮밥</a></li>
+                                    <li class="cate_in_li"><a href="#">즉석밥</a></li>
+                                    <li class="cate_in_li"><a href="#">즉석죽</a></li>
+                                    <li class="cate_in_li"><a href="#">컵라면</a></li>
+                                    <li class="cate_in_li"><a href="#">컵밥</a></li>
+                                    <li class="cate_in_li"><a href="#">탕</a></li>
+                                </ul>
+                            </li>
+                            <li class="cate_hover_li">정육·난류</li>
+                            <li class="cate_hover_li">수산가공품</li>
+                            <li class="cate_hover_li">낙농·축산가공품</li>
+                            <li class="cate_hover_li">조미료·장류·식용유</li>
+                            <li class="cate_hover_li">채소</li>
+                            <li class="cate_hover_li">과자·빙과류</li>
+                            <li class="cate_hover_li">차·음료·주류</li>
+                            <li class="cate_hover_li">이미용품</li>
+                            <li class="cate_hover_li">세탁·주방·가사용품</li>
+                            <li class="cate_hover_li">생선류</li>
+                        </ul>
+                    </div>
                 </div>
+                
                 <div class="search_bar">
                     <form action="#" method="get">
                         <div class="search_form">
@@ -68,26 +111,26 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
                                 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">견과류</a></li>
-                                    <li style="visibility: hidden;"><a href="#">국수</a></li>
-                                    <li style="visibility: hidden;"><a href="#">냉동만두</a></li>
-                                    <li style="visibility: hidden;"><a href="#">당면</a></li>
-                                    <li style="visibility: hidden;"><a href="#">두부</a></li>
-                                    <li style="visibility: hidden;"><a href="#">라면</a></li>
-                                    <li style="visibility: hidden;"><a href="#">밀가루</a></li>
-                                    <li style="visibility: hidden;"><a href="#">부침가루</a></li>
-                                    <li style="visibility: hidden;"><a href="#">빵</a></li>
-                                    <li style="visibility: hidden;"><a href="#">스프</a></li>
-                                    <li style="visibility: hidden;"><a href="#">식빵</a></li>
-                                    <li style="visibility: hidden;"><a href="#">시리얼</a></li>
-                                    <li style="visibility: hidden;"><a href="#">즉석국</a></li>
-                                    <li style="visibility: hidden;"><a href="#">즉석덮밥</a></li>
-                                    <li style="visibility: hidden;"><a href="#">즉석밥</a></li>
-                                    <li style="visibility: hidden;"><a href="#">즉석죽</a></li>
-                                    <li style="visibility: hidden;"><a href="#">컵라면</a></li>
-                                    <li style="visibility: hidden;"><a href="#">컵밥</a></li>
-                                    <li style="visibility: hidden;"><a href="#">탕</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">견과류</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">국수</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">냉동만두</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">당면</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">두부</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">라면</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">밀가루</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">부침가루</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">빵</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">스프</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">식빵</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">시리얼</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">즉석국</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">즉석덮밥</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">즉석밥</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">즉석죽</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">컵라면</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">컵밥</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">탕</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -97,11 +140,11 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">계란</a></li>
-                                    <li style="visibility: hidden;"><a href="#">닭고기</a></li>
-                                    <li style="visibility: hidden;"><a href="#">돼지고기</a></li>
-                                    <li style="visibility: hidden;"><a href="#">쇠고기</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">계란</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">닭고기</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">돼지고기</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">쇠고기</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -111,11 +154,11 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">맛김</a></li>
-                                    <li style="visibility: hidden;"><a href="#">맛살</a></li>
-                                    <li style="visibility: hidden;"><a href="#">어묵</a></li>
-                                    <li style="visibility: hidden;"><a href="#">참치캔</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">맛김</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">맛살</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">어묵</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">참치캔</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -125,14 +168,14 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">마가린</a></li>
-                                    <li style="visibility: hidden;"><a href="#">발효유</a></li>
-                                    <li style="visibility: hidden;"><a href="#">분유</a></li>
-                                    <li style="visibility: hidden;"><a href="#">소시지</a></li>
-                                    <li style="visibility: hidden;"><a href="#">우유</a></li>
-                                    <li style="visibility: hidden;"><a href="#">치즈</a></li>
-                                    <li style="visibility: hidden;"><a href="#">햄</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">마가린</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">발효유</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">분유</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">소시지</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">우유</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">치즈</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">햄</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -142,23 +185,22 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">간장</a></li>
-                                    <li style="visibility: hidden;"><a href="#">고추장</a></li>
-                                    <li style="visibility: hidden;"><a href="#">된장</a></li>
-                                    <li style="visibility: hidden;"><a href="#">잼</a></li>
-                                    <li style="visibility: hidden;"><a href="#">마요네즈</a></li>
-                                    <li style="visibility: hidden;"><a href="#">꿀</a></li>
-                                    <li style="visibility: hidden;"><a href="#">설탕</a></li>
-                                    <li style="visibility: hidden;"><a href="#">소금</a></li>
-                                    <li style="visibility: hidden;"><a href="#">식용유</a></li>
-                                    <li style="visibility: hidden;"><a href="#">식초</a></li>
-                                    <li style="visibility: hidden;"><a href="#">쌈장</a></li>
-                                    <li style="visibility: hidden;"><a href="#">참기름</a></li>
-                                    <li style="visibility: hidden;"><a href="#">카레</a></li>
-                                    <li style="visibility: hidden;"><a href="#">케첩</a></li>
-                                    <li style="visibility: hidden;"><a href="#">혼합조미료</a></li>
-                                    <li style="visibility: hidden;"><a href="#">드레싱</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">간장</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">고추장</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">된장</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">잼</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">꿀</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">설탕</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">소금</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">식용유</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">식초</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">쌈장</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">참기름</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">카레</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">케첩</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">혼합조미료</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">드레싱</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -168,27 +210,27 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">감자</a></li>
-                                    <li style="visibility: hidden;"><a href="#">고구마</a></li>
-                                    <li style="visibility: hidden;"><a href="#">깻잎</a></li>
-                                    <li style="visibility: hidden;"><a href="#">단무지</a></li>
-                                    <li style="visibility: hidden;"><a href="#">당근</a></li>
-                                    <li style="visibility: hidden;"><a href="#">대파</a></li>
-                                    <li style="visibility: hidden;"><a href="#">마늘</a></li>
-                                    <li style="visibility: hidden;"><a href="#">무</a></li>
-                                    <li style="visibility: hidden;"><a href="#">배추</a></li>
-                                    <li style="visibility: hidden;"><a href="#">버섯</a></li>
-                                    <li style="visibility: hidden;"><a href="#">상추</a></li>
-                                    <li style="visibility: hidden;"><a href="#">시금치</a></li>
-                                    <li style="visibility: hidden;"><a href="#">양배추</a></li>
-                                    <li style="visibility: hidden;"><a href="#">양파</a></li>
-                                    <li style="visibility: hidden;"><a href="#">오이</a></li>
-                                    <li style="visibility: hidden;"><a href="#">쪽파</a></li>
-                                    <li style="visibility: hidden;"><a href="#">콩나물</a></li>
-                                    <li style="visibility: hidden;"><a href="#">포기김치</a></li>
-                                    <li style="visibility: hidden;"><a href="#">풋고추</a></li>
-                                    <li style="visibility: hidden;"><a href="#">호박</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">감자</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">고구마</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">깻잎</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">단무지</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">당근</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">대파</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">마늘</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">무</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">배추</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">버섯</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">상추</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">시금치</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">양배추</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">양파</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">오이</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">쪽파</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">콩나물</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">포기김치</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">풋고추</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">호박</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -198,19 +240,19 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">감자칩</a></li>
-                                    <li style="visibility: hidden;"><a href="#">껌</a></li>
-                                    <li style="visibility: hidden;"><a href="#">모나카류아이스크림</a></li>
-                                    <li style="visibility: hidden;"><a href="#">빙과류</a></li>
-                                    <li style="visibility: hidden;"><a href="#">새우깡</a></li>
-                                    <li style="visibility: hidden;"><a href="#">아이스크림</a></li>
-                                    <li style="visibility: hidden;"><a href="#">에너지바</a></li>
-                                    <li style="visibility: hidden;"><a href="#">초코바</a></li>
-                                    <li style="visibility: hidden;"><a href="#">초코파이</a></li>
-                                    <li style="visibility: hidden;"><a href="#">초콜릿</a></li>
-                                    <li style="visibility: hidden;"><a href="#">사탕</a></li>
-                                    <li style="visibility: hidden;"><a href="#">비스킷</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">감자칩</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">껌</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">모나카류아이스크림</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">빙과류</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">새우깡</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">아이스크림</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">에너지바</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">초코바</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">초코파이</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">초콜릿</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">사탕</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">비스킷</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -220,22 +262,22 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">주스</a></li>
-                                    <li style="visibility: hidden;"><a href="#">차</a></li>
-                                    <li style="visibility: hidden;"><a href="#">두유</a></li>
-                                    <li style="visibility: hidden;"><a href="#">막걸리</a></li>
-                                    <li style="visibility: hidden;"><a href="#">맥주</a></li>
-                                    <li style="visibility: hidden;"><a href="#">비타민음료</a></li>
-                                    <li style="visibility: hidden;"><a href="#">사이다</a></li>
-                                    <li style="visibility: hidden;"><a href="#">생수</a></li>
-                                    <li style="visibility: hidden;"><a href="#">소주</a></li>
-                                    <li style="visibility: hidden;"><a href="#">에너지음료</a></li>
-                                    <li style="visibility: hidden;"><a href="#">이온음료</a></li>
-                                    <li style="visibility: hidden;"><a href="#">캔커피</a></li>
-                                    <li style="visibility: hidden;"><a href="#">커피믹스</a></li>
-                                    <li style="visibility: hidden;"><a href="#">콜라</a></li>
-                                    <li style="visibility: hidden;"><a href="#">포도주</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">주스</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">차</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">두유</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">막걸리</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">맥주</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">비타민음료</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">사이다</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">생수</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">소주</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">에너지음료</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">이온음료</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">캔커피</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">커피믹스</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">콜라</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">포도주</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -245,22 +287,22 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">화장지</a></li>
-                                    <li style="visibility: hidden;"><a href="#">바디워시</a></li>
-                                    <li style="visibility: hidden;"><a href="#">로션</a></li>
-                                    <li style="visibility: hidden;"><a href="#">생리대</a></li>
-                                    <li style="visibility: hidden;"><a href="#">비누</a></li>
-                                    <li style="visibility: hidden;"><a href="#">손세정제</a></li>
-                                    <li style="visibility: hidden;"><a href="#">염색약</a></li>
-                                    <li style="visibility: hidden;"><a href="#">면도날</a></li>
-                                    <li style="visibility: hidden;"><a href="#">샴푸</a></li>
-                                    <li style="visibility: hidden;"><a href="#">종이기저귀</a></li>
-                                    <li style="visibility: hidden;"><a href="#">치약</a></li>
-                                    <li style="visibility: hidden;"><a href="#">칫솔</a></li>
-                                    <li style="visibility: hidden;"><a href="#">구강청결제</a></li>
-                                    <li style="visibility: hidden;"><a href="#">마스크</a></li>
-                                    <li style="visibility: hidden;"><a href="#">코로나 자가검사 키트</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">화장지</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">바디워시</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">로션</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">생리대</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">비누</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">손세정제</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">염색약</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">면도날</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">샴푸</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">종이기저귀</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">치약</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">칫솔</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">구강청결제</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">마스크</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">코로나 자가검사 키트</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -270,21 +312,21 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">고무장갑</a></li>
-                                    <li style="visibility: hidden;"><a href="#">랩</a></li>
-                                    <li style="visibility: hidden;"><a href="#">부탄가스</a></li>
-                                    <li style="visibility: hidden;"><a href="#">살균소독제</a></li>
-                                    <li style="visibility: hidden;"><a href="#">살충제</a></li>
-                                    <li style="visibility: hidden;"><a href="#">섬유유연제</a></li>
-                                    <li style="visibility: hidden;"><a href="#">섬유탈취제</a></li>
-                                    <li style="visibility: hidden;"><a href="#">세정제</a></li>
-                                    <li style="visibility: hidden;"><a href="#">세탁세제(가루형)</a></li>
-                                    <li style="visibility: hidden;"><a href="#">세탁세제(액체형)</a></li>
-                                    <li style="visibility: hidden;"><a href="#">습기제거제</a></li>
-                                    <li style="visibility: hidden;"><a href="#">위생배</a></li>
-                                    <li style="visibility: hidden;"><a href="#">주방세제</a></li>
-                                    <li style="visibility: hidden;"><a href="#">키친타올</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">고무장갑</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">랩</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">부탄가스</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">살균소독제</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">살충제</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">섬유유연제</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">섬유탈취제</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">세정제</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">세탁세제(가루형)</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">세탁세제(액체형)</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">습기제거제</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">위생배</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">주방세제</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">키친타올</a></li>
                                 </ul>
                             </li>
                             <li class="cate_nav_item">
@@ -294,11 +336,11 @@
                                     <button type="button" class="cate_nav_bt"><i class="fa-solid fa-chevron-down"></i></button>
                                 </div>
 
-                                <ul class="nonedeco_li" style="max-height: 0px; opacity: 0;">
-                                    <li style="visibility: hidden;"><a href="#">갈치</a></li>
-                                    <li style="visibility: hidden;"><a href="#">고등어</a></li>
-                                    <li style="visibility: hidden;"><a href="#">오징어</a></li>
-                                    <li style="visibility: hidden;"><a href="#">조기</a></li>
+                                <ul class="cate_nav_ul nonedeco_li" style="max-height: 0px; opacity: 0;">
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">갈치</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">고등어</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">오징어</a></li>
+                                    <li class="details_cate" style="visibility: hidden;"><a href="#">조기</a></li>
                                 </ul>
                             </li>
                         </ul>

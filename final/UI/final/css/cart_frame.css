@@ -132,6 +132,42 @@ body {
     font-size: 20px;
     align-self: center;
 }
+.cate_hover_div {
+    box-sizing: border-box;
+    width: 151px;
+    height: 470px;
+    padding: 0 16px;
+    border: 1px solid lightgray;
+
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    background-color: #dbe5df;
+}
+.cate_hover_ul {
+    padding-left: 0;
+}
+.cate_hover_li {
+    margin-bottom: 16px;
+    font-size: 12px;
+}
+.cate_in_ul {
+    box-sizing: border-box;
+    width: 150px;
+    height: 100%; 
+    padding: 15px;
+    border: 1px solid lightgray;
+
+    position: absolute;
+    top: 0px;
+    left: 150px;
+    
+    background-color: #e1e3e0;
+}
+.cate_in_li {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
 .search_form {
     width: 400px;
     height: 40px;

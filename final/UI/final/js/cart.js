@@ -1,10 +1,12 @@
 //카테고리 nav
 //화살표 버튼 누르면 세부 카테고리 나오는 것
-var cateNavBts = document.querySelectorAll(".cate_nav_bt");
-var cateDetailUls = document.querySelectorAll(".cate_nav_ul");
-var cateLis = document.querySelectorAll(".cate_nav_item");
+window.onload = function () {    
 
-var btRotationOpen = function (e) {
+    var cateNavBts = document.querySelectorAll(".cate_nav_bt");
+    var cateDetailUls = document.querySelectorAll(".cate_nav_ul");
+    var cateLis = document.querySelectorAll(".cate_nav_item");
+
+    var btRotationOpen = function (e) {
     e.target.style.transition = "all 0.2s ease-in-out 0s";
     const index = Array.from(cateNavBts).indexOf(e.currentTarget);
 
@@ -45,13 +47,17 @@ var btRotationOpen = function (e) {
             li.style.visibility = "visible";
         });        
     } //if-else
-   
-
 };
 
 cateNavBts.forEach((button) => {
     button.addEventListener("click", btRotationOpen);
 }) //.forEach
 
-    // cateNavBt.style.maxHeight = "200px";
-    // cateNavBt.style.opacity = 1;
+//카테고리 호버링 드롭다운
+}
+
+$(document).ready(function() {
+    $("#top_bt").click(function() {
+      console.log("clicked...");
+    });
+  });
