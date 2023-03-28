@@ -127,6 +127,8 @@ body {
     display: flex;    
     width: 120px;
     justify-content: space-around;
+
+    cursor: pointer;
 }
 .cate > span {
     font-size: 20px;
@@ -135,21 +137,32 @@ body {
 .cate_hover_div {
     box-sizing: border-box;
     width: 151px;
-    height: 470px;
-    padding: 0 16px;
+    height: 490px;
+    padding: 0 5px;
     border: 1px solid lightgray;
 
     position: absolute;
-    top: 50px;
+    top: 60px;
     z-index: 1;
     background-color: #dbe5df;
 }
 .cate_hover_ul {
     padding-left: 0;
+    margin-top: 10px;
 }
 .cate_hover_li {
     margin-bottom: 16px;
     font-size: 12px;
+
+    cursor: pointer;
+}
+.cate_hover_li_text {
+    padding: 7px;
+}
+.cate_hover_li_selected {
+    background-color: rgba(182, 182, 182, 0.507);
+    border-radius: 3px;
+    
 }
 .cate_in_ul {
     box-sizing: border-box;
@@ -167,6 +180,10 @@ body {
 .cate_in_li {
     margin-bottom: 10px;
     font-size: 12px;
+}
+.cate_in_li_selected {
+    color: #53917E;
+    text-decoration: underline;
 }
 .search_form {
     width: 400px;
