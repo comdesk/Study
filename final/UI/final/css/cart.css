@@ -118,7 +118,11 @@ body {
 .cate {
     display: flex;    
     width: 120px;
+    height: 50px;
     justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
 }
 .cate > span {
     font-size: 20px;
