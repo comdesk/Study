@@ -52,12 +52,7 @@ window.onload = function () {
     cateNavBts.forEach((button) => {
         button.addEventListener("click", btRotationOpen);
     }) //.forEach
-}
 
-
-
-//카테고리 호버링 드롭다운
-window.onload = function () {
     var cate = document.querySelector("#category");
     //공공데이터 api에서 가져올 수도 있을듯..
     var cateInLiArr = [
@@ -84,9 +79,10 @@ window.onload = function () {
         console.log("e.pageY", e.pageY);
         console.log("e.screenY", e.screenY);
 
-        if(e.pageY <= 148 || e.pageY >= 638) {
-            cateHoverDiv.style.display = "none";
-        }
+        // if(e.pageY <= 148 || e.pageY >= 638) {
+        //     cateHoverDiv.style.display = "none";
+        // }
+        cateHoverDiv.style.display = "none";
     }
       
     var hoverIn = function () {
@@ -97,6 +93,14 @@ window.onload = function () {
             cateInUl.style.display = "block";
         }
     };
+
+    var hoverOut = function () {
+        var cateInUl = this.querySelector(".cate_in_ul"); 
+
+        if (cateInUl) {
+            cateInUl.style.display = "block";
+        }
+    };  //hoverOut
       
       
       var cate = document.querySelector(".cate");
@@ -105,7 +109,12 @@ window.onload = function () {
       
       var cateHoverUl = document.querySelector(".cate_hover_ul");
       cateHoverUl.addEventListener("mouseover", hoverIn);
+      cateHoverUl.addEventListener("mouseout", hoverOut);
 
 
 };
+
+
+
+//카테고리 호버링 드롭다운
 
