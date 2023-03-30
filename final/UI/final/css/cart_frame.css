@@ -140,7 +140,7 @@ body {
     box-sizing: border-box;
     width: 151px;
     height: 490px;
-    /* padding: 0 5px; */
+    padding: 0 5px;
     border: 1px solid lightgray;
 
     position: absolute;
@@ -184,6 +184,8 @@ body {
 .cate_in_li {
     margin-bottom: 10px;
     font-size: 12px;
+
+    z-index: 3;
 }
 .cate_in_li_selected {
     color: #53917E;

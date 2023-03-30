@@ -115,23 +115,117 @@ window.onload = function () {
 
     //cateHoverLi 선택
     var cateHoverLis = document.querySelectorAll(".cate_hover_li");
+    var currentTarget;
 
     var cateHoverLiSelected = function (e) {
         const index = Array.from(cateHoverLis).indexOf(e.currentTarget);
         console.log("e.currentTarget: ", e.currentTarget);
         console.log("e.target: ", e.target);
-        e.currentTarget.classList.add("cate_hover_li_selected");
+        currentTarget = e.currentTarget;
+        currentTarget.classList.add("cate_hover_li_selected");
 
-        var ul = document.createElement("ul");
-        ul.setAttribute("class", "cate_in_ul nonedeco_li");
 
-        for (let i = 0; i < cateInLiArr[index].length; i++) {
-            const li = `<li class="cate_in_li"><a href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
+        // if(document.querySelector(".cate_in_ul") === null) {
+        //     ul = document.createElement("ul");
+        //     ul.setAttribute("class", "cate_in_ul nonedeco_li");
 
-            ul.innerHTML += li;           
+        //     for (let i = 0; i < cateInLiArr[index].length; i++) {
+        //         li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
+
+        //         ul.innerHTML += li;           
+        //     } //for
+
+        //     var hoverText = document.querySelectorAll(".cate_hover_li_text");
+        //     hoverText[index].append(ul);
+        // } else {
+
+        //     for (let i = 0; i < cateInLiArr[index].length; i++) {
+        //         li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
+
+        //         ul.innerHTML += li; 
+       
+        //     } //for
+
+        //     var hoverText = document.querySelectorAll(".cate_hover_li_text");
+        //     hoverText[index].append(ul);
+        // } //if-else
+
+        // if(document.querySelector(".cate_in_ul") === null) {
+        //     ul = document.createElement("ul");
+        //     ul.setAttribute("class", "cate_in_ul nonedeco_li");
+
+        //     for (let i = 0; i < cateInLiArr[index].length; i++) {
+        //         let li = document.createElement("li");
+        //         li.setAttribute("class", "cate_in_li");
+        //         li.innerHTML = `<a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a>`;
+        //         // li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
+
+        //         ul.appendChild(li);        
+        //     } //for
+
+        //     var hoverText = document.querySelectorAll(".cate_hover_li_text");
+        //     hoverText[index].append(ul);
+        // } else {
+        //     console.log("ul:", ul);
+        //     lis = ul.querySelectorAll(".cate_in_li");
+
+        //     var prevUl = document.querySelector(".cate_in_ul");
+        //     if(prevUl) {
+        //         prevUl.style.display = "none";
+        //     }
+            
+        //     console.log("lis:", lis);
+        //     for (let i = 0; i < cateInLiArr[index].length; i++) {
+        //         li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
+
+        //         ul.innerHTML += li; 
+        //         // a = `<a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a>`;
+        //         // lis[i].innerHTML(a);          
+        //     } //for
+
+        //     var hoverText = document.querySelectorAll(".cate_hover_li_text");
+        //     hoverText[index].append(ul);
+        // } //if-else
+        
+        // if(document.querySelector(".cate_in_ul") === null) {
+            var ul = document.createElement("ul");
+            ul.setAttribute("class", "cate_in_ul nonedeco_li");
+
+            var prevUl = document.querySelector(".cate_in_ul.nonedeco_li");
+            console.log("prevUl: ", prevUl);
+            if(prevUl != null) {
+                // prevUl.style.display = "none";
+                // prevUl.remove();
+                prevUl.parentNode.removeChild(prevUl);
+            }
+
+            for (let i = 0; i < cateInLiArr[index].length; i++) {
+                let li = document.createElement("li");
+                li.setAttribute("class", "cate_in_li");
+                li.innerHTML = `<a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a>`;
+                // li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
+
+                ul.appendChild(li);        
+            } //for
+
+           
+            console.log("ul: ", ul);
+            // e.currentTarget.append(ul);
+            var hoverText = document.querySelectorAll(".cate_hover_li_text");
+            hoverText[index].append(ul);
+        // }
+
+        var prevLi = document.querySelector(".cate_in_li_selected");
+        if (prevLi) {
+            prevLi.classList.remove("cate_in_li_selected");
         }
 
-        document.querySelector(".cate_hover_li_text").append(ul);
+        console.log("e.target: ", e.target);
+        console.log("e.target.tagName: ", e.target.tagName);
+        if(e.target.tagName === 'A') {
+            e.target.parentNode.classList.add("cate_in_li_selected");
+            // e.target.classList.add("cate_in_li_selected");
+        }
         
     };
     
@@ -140,7 +234,10 @@ window.onload = function () {
         console.log("e.currentTarget: ", e.currentTarget);
         e.currentTarget.classList.remove("cate_hover_li_selected");
 
-        // document.querySelector(".cate_in_ul").remove();
+        let cateInLi = document.querySelectorAll(".cate_in_li");
+        // cateInLi.forEach((a) => {
+        //     a.remove();
+        // });
     };
 
     cateHoverLis.forEach((li) => {
@@ -148,18 +245,29 @@ window.onload = function () {
         li.addEventListener('mouseout', cateHoverLiDeselected);
     });
 
-    var inHover = function (e) {
-        console.log(e.currentTarget);
-    }
+    // var inHover = function (e) {
+    //     console.log(e.currentTarget);
+    // }
 
-    var outHover = function (e) {
-        console.log(e.currentTarget);
-    }
+    // var outHover = function (e) {
+    //     console.log(e.currentTarget);
+    // }
 
-    var cateInUL = document.querySelectorAll(".cate_in_ul");
-    cateInUL.addEventListener('mouseover', inHover);
-    cateInUL.addEventListener('mouseout', outHover);
+    // var cateInUL = document.querySelectorAll(".cate_in_ul");
+    // cateInUL.addEventListener('mouseover', inHover);
+    // cateInUL.addEventListener('mouseout', outHover);
 
+    // var cateInLi = document.querySelectorAll(".cate_in_li");
+    // cateInLi.forEach((li) => {
+    //     li.addEventListener('mouseover', function (e) {
+    //        e.target.classList.add("cate_in_li_selected");
+    //     });
+    // });
+    // cateInLi.forEach((li) => {
+    //     li.addEventListener('mouseout', function (e) {
+    //         e.target.classList.remove("cate_in_li_selected");
+    //     });
+    // });
 };
 
 
