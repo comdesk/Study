@@ -96,6 +96,7 @@ window.onload = function () {
 
         if (cateInUl) {
             cateInUl.style.display = "none";
+            // document.querySelector(".cate_in_ul").remove();
         }
     };  //hoverOut
 
@@ -139,7 +140,7 @@ window.onload = function () {
         console.log("e.currentTarget: ", e.currentTarget);
         e.currentTarget.classList.remove("cate_hover_li_selected");
 
-        document.querySelector(".cate_in_ul").remove();
+        // document.querySelector(".cate_in_ul").remove();
     };
 
     cateHoverLis.forEach((li) => {
@@ -147,20 +148,19 @@ window.onload = function () {
         li.addEventListener('mouseout', cateHoverLiDeselected);
     });
 
-    // var inHover = function (e) {
-    //     console.log(e.currentTarget);
-    // }
+    var inHover = function (e) {
+        console.log(e.currentTarget);
+    }
 
-    // var outHover = function (e) {
-    //     console.log(e.currentTarget);
-    // }
+    var outHover = function (e) {
+        console.log(e.currentTarget);
+    }
 
-    // var cateInUL = document.querySelectorAll(".cate_in_ul");
-    // cateInUL.addEventListener('mouseover', inHover);
-    // cateInUL.addEventListener('mouseout', outHover);
+    var cateInUL = document.querySelectorAll(".cate_in_ul");
+    cateInUL.addEventListener('mouseover', inHover);
+    cateInUL.addEventListener('mouseout', outHover);
 
 };
-
 
 
 
