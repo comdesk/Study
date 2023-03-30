@@ -140,7 +140,7 @@ body {
     box-sizing: border-box;
     width: 151px;
     height: 490px;
-    padding: 0 5px;
+    /* padding: 0 5px; */
     border: 1px solid lightgray;
 
     position: absolute;
@@ -172,6 +172,8 @@ body {
     height: 100%; 
     padding: 15px;
     border: 1px solid lightgray;
+    z-index: 2;
+    display: none;
 
     position: absolute;
     top: 0px;
