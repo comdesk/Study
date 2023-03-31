@@ -123,69 +123,6 @@ window.onload = function () {
         console.log("e.target: ", e.target);
         currentTarget = e.currentTarget;
         currentTarget.classList.add("cate_hover_li_selected");
-
-
-        // if(document.querySelector(".cate_in_ul") === null) {
-        //     ul = document.createElement("ul");
-        //     ul.setAttribute("class", "cate_in_ul nonedeco_li");
-
-        //     for (let i = 0; i < cateInLiArr[index].length; i++) {
-        //         li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
-
-        //         ul.innerHTML += li;           
-        //     } //for
-
-        //     var hoverText = document.querySelectorAll(".cate_hover_li_text");
-        //     hoverText[index].append(ul);
-        // } else {
-
-        //     for (let i = 0; i < cateInLiArr[index].length; i++) {
-        //         li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
-
-        //         ul.innerHTML += li; 
-       
-        //     } //for
-
-        //     var hoverText = document.querySelectorAll(".cate_hover_li_text");
-        //     hoverText[index].append(ul);
-        // } //if-else
-
-        // if(document.querySelector(".cate_in_ul") === null) {
-        //     ul = document.createElement("ul");
-        //     ul.setAttribute("class", "cate_in_ul nonedeco_li");
-
-        //     for (let i = 0; i < cateInLiArr[index].length; i++) {
-        //         let li = document.createElement("li");
-        //         li.setAttribute("class", "cate_in_li");
-        //         li.innerHTML = `<a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a>`;
-        //         // li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
-
-        //         ul.appendChild(li);        
-        //     } //for
-
-        //     var hoverText = document.querySelectorAll(".cate_hover_li_text");
-        //     hoverText[index].append(ul);
-        // } else {
-        //     console.log("ul:", ul);
-        //     lis = ul.querySelectorAll(".cate_in_li");
-
-        //     var prevUl = document.querySelector(".cate_in_ul");
-        //     if(prevUl) {
-        //         prevUl.style.display = "none";
-        //     }
-            
-        //     console.log("lis:", lis);
-        //     for (let i = 0; i < cateInLiArr[index].length; i++) {
-        //         li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
-
-        //         ul.innerHTML += li; 
-        //         // a = `<a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a>`;
-        //         // lis[i].innerHTML(a);          
-        //     } //for
-
-        //     var hoverText = document.querySelectorAll(".cate_hover_li_text");
-        //     hoverText[index].append(ul);
-        // } //if-else
         
         // if(document.querySelector(".cate_in_ul") === null) {
             var ul = document.createElement("ul");
@@ -215,6 +152,8 @@ window.onload = function () {
             hoverText[index].append(ul);
         // }
 
+
+
         var prevLi = document.querySelector(".cate_in_li_selected");
         if (prevLi) {
             prevLi.classList.remove("cate_in_li_selected");
@@ -223,7 +162,7 @@ window.onload = function () {
         console.log("e.target: ", e.target);
         console.log("e.target.tagName: ", e.target.tagName);
         if(e.target.tagName === 'A') {
-            e.target.parentNode.classList.add("cate_in_li_selected");
+            e.target.classList.add("cate_in_li_selected");
             // e.target.classList.add("cate_in_li_selected");
         }
         
@@ -268,6 +207,10 @@ window.onload = function () {
     //         e.target.classList.remove("cate_in_li_selected");
     //     });
     // });
+    document.querySelector('.cate_in_li_a').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = this.getAttribute('href');
+      });
 };
 
 
