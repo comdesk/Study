@@ -37,7 +37,7 @@
     display: inline-block;
     vertical-align: middle;
 }
-.allDeletebt {
+#allDeletebt {
     border: 0;
 
     font-family: 'Jeju Gothic', sans-serif;
