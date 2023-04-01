@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="ico/favicon.ico" type="image/x-icon">
     <link rel="icon" href="ico/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/cart_frame.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/3a5b85a601.js" crossorigin="anonymous"></script>
@@ -38,10 +39,72 @@
 
         <div class="widthfix search_fix">    
             <div id="search">
-                <div class="cate">
-                    <i class="fa-solid fa-bars fa-2x"></i>
-                    <span>카테고리</span>    
+                <div id="category">
+                    <div class="cate" style="height: 50px; align-items: center;">
+                        <i class="fa-solid fa-bars fa-2x"></i>
+                        <span>카테고리</span>    
+                        <div class="cate_hover_div" style="display: none;">
+                            <ul class="cate_hover_ul nonedeco_li">
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        곡물가공품
+                                    </div>
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        정육·난류
+                                    </div>                                
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        수산가공품
+                                    </div>                                
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        낙농·축산가공품
+                                    </div>                                 
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        조미료·장류·식용유
+                                    </div>                                 
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        채소
+                                    </div>                                 
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        과자·빙과류
+                                    </div>                                 
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        차·음료·주류
+                                    </div>                                 
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        이미용품
+                                    </div>                                 
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        세탁·주방·가사용품
+                                    </div>                                 
+                                </li>
+                                <li class="cate_hover_li">
+                                    <div class="cate_hover_li_text">
+                                        생선류
+                                    </div>                                 
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="search_bar">
                     <form action="#" method="get">
                         <div class="search_form">
@@ -308,9 +371,9 @@
                     <div class="article">
                         <div class="goods_sort">
                             <ul class="nav goods_sort_ul">
-                                <li class="goods_sort_li nav_item"><a href="#" class="goods_sort_a">인기순</a></li>
-                                <li class="goods_sort_li nav_item"><a href="#" class="goods_sort_a">낮은 가격순</a></li>
-                                <li class="goods_sort_li nav_item"><a href="#" class="goods_sort_a">높은 가격순</a></li>
+                                <li class="nav_item goods_sort_li"><a href="#" class="goods_sort_a">인기순</a></li>
+                                <li class="nav_item goods_sort_li"><a href="#" class="goods_sort_a">낮은 가격순</a></li>
+                                <li class="nav_item goods_sort_li"><a href="#" class="goods_sort_a">높은 가격순</a></li>
                             </ul>
                         </div>
 
