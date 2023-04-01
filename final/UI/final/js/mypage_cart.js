@@ -1,20 +1,22 @@
 window.onload = function () {
+    //첫화면 토탈
     const totals = document.querySelectorAll(".total_price");
-    const forLength = document.querySelectorAll(".cart_goods_list").length;
     totals.forEach((total) => {
         var tPrice = 0;
         var index = Array.from(totals).indexOf(total);
 
-        for(let i = 1; i <= forLength; i++) {
-            const priceClass = `.goods_price${i}`;
-            const priceSpans = document.querySelectorAll(priceClass);
-            console.log("price:", parseInt(priceSpans[index].textContent.replace(",", "")));
+        const priceTRs = document.querySelectorAll(".goods_price_tr");
+        console.log("index:", index);
+
+        priceTRs.forEach((tr) => {
+            const priceSpans = tr.querySelectorAll(".goods_price");
             tPrice += parseInt(priceSpans[index].textContent.replace(",", ""));
-        } //for
+        });
         
         total.textContent = tPrice.toLocaleString();
     });
 
+    //플러스버튼 -> 수량 1 증가
     var plusBts = document.querySelectorAll(".count_plus_bt");
     var counts = Array.from(plusBts).map(() => 1);  
 
@@ -23,8 +25,8 @@ window.onload = function () {
 
         counts[index]++;
 
-        const priceClass = `.goods_price${index+1}`;
-        const priceSpans = document.querySelectorAll(priceClass);
+        const priceTRs = document.querySelectorAll(".goods_price_tr");
+        const priceSpans = priceTRs[index].querySelectorAll(".goods_price");
 
         priceSpans.forEach((span) => {
             const intialPrice = parseInt(span.dataset.price);
@@ -43,19 +45,20 @@ window.onload = function () {
             minusBt.style.backgroundImage = "url(../imgs/minus-xs-svgrepo-black.svg)";
         }
 
-        const totals = document.querySelectorAll(".total_price");
-        const forLength = document.querySelectorAll(".cart_goods_list").length;
+        //합계 구하기
+        var totals = document.querySelectorAll(".total_price");
         totals.forEach((total) => {
             var tPrice = 0;
             var index = Array.from(totals).indexOf(total);
 
-            for(let i = 1; i <= forLength; i++) {
-                const priceClass = `.goods_price${i}`;
-                const priceSpans = document.querySelectorAll(priceClass);
-                console.log("price:", parseInt(priceSpans[index].textContent.replace(",", "")));
+            const priceTRs = document.querySelectorAll(".goods_price_tr");
+            console.log("index:", index);
+
+            priceTRs.forEach((tr) => {
+                const priceSpans = tr.querySelectorAll(".goods_price");
                 tPrice += parseInt(priceSpans[index].textContent.replace(",", ""));
-            } //for
-            
+            });
+
             total.textContent = tPrice.toLocaleString();
         });
     };  //plus
@@ -64,6 +67,7 @@ window.onload = function () {
         bt.addEventListener('click', plus);
     });
 
+    //마이너스버튼 -> 수량 1 감소
     var minusBts = document.querySelectorAll(".count_minus_bt");
 
     var minus = function (e) {
@@ -72,8 +76,8 @@ window.onload = function () {
 
         if(counts[index] > 1) counts[index]--;
 
-        const priceClass = `.goods_price${index+1}`;
-        const priceSpans = document.querySelectorAll(priceClass);
+        const priceTRs = document.querySelectorAll(".goods_price_tr");
+        const priceSpans = priceTRs[index].querySelectorAll(".goods_price");
 
         priceSpans.forEach((span) => {
             const intialPrice = parseInt(span.dataset.price);
@@ -91,25 +95,55 @@ window.onload = function () {
             e.currentTarget.style.backgroundImage = "url(../imgs/minus-xs-svgrepo-gray.svg)";
         }
 
-        const totals = document.querySelectorAll(".total_price");
-        const forLength = document.querySelectorAll(".cart_goods_list").length;
+        //합계 구하기
+        var totals = document.querySelectorAll(".total_price");
         totals.forEach((total) => {
             var tPrice = 0;
             var index = Array.from(totals).indexOf(total);
 
-            for(let i = 1; i <= forLength; i++) {
-                const priceClass = `.goods_price${i}`;
-                const priceSpans = document.querySelectorAll(priceClass);
-                console.log("price:", parseInt(priceSpans[index].textContent.replace(",", "")));
+            const priceTRs = document.querySelectorAll(".goods_price_tr");
+            console.log("index:", index);
+
+            priceTRs.forEach((tr) => {
+                const priceSpans = tr.querySelectorAll(".goods_price");
                 tPrice += parseInt(priceSpans[index].textContent.replace(",", ""));
-            } //for
-            
+            });
+
             total.textContent = tPrice.toLocaleString();
         });
     }; //minus
 
     minusBts.forEach((bt) => {
         bt.addEventListener('click', minus);
+    });
+
+    //상품 개별 삭제
+    var deleteBts = document.querySelectorAll(".delete_bt");
+    var deleteOne = function (e) {      
+        if(confirm('삭제하시겠습니까?')) {
+            var tr = e.target.closest(".goods_price_tr");
+            tr.remove();
+        } //if 
+
+        const totals = document.querySelectorAll(".total_price");
+        totals.forEach((total) => {
+            var tPrice = 0;
+            var index = Array.from(totals).indexOf(total);
+
+            const priceTRs = document.querySelectorAll(".goods_price_tr");
+            console.log("index:", index);
+
+            priceTRs.forEach((tr) => {
+                const priceSpans = tr.querySelectorAll(".goods_price");
+                tPrice += parseInt(priceSpans[index].textContent.replace(",", ""));
+            });
+            
+            total.textContent = tPrice.toLocaleString();
+        });
+    };
+
+    deleteBts.forEach((bt) => {
+        bt.addEventListener('click', deleteOne)
     });
 };
 
