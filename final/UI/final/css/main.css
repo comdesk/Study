@@ -1,0 +1,111 @@
+@charset "utf-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+html{
+    font-family: 'Jeju Gothic', sans-serif;
+}
+body {
+    margin: 0;
+    height: 100vh;
+}
+body .wrapper_contatiner{
+    /* position: relative;
+    min-height: 100vh; */
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+a
+{
+   text-decoration:none;
+}
+.wrapper{
+    width: 1130px;
+    padding: 20px 30px;
+    margin: auto;
+
+    flex: 1;
+}
+/* main{
+    font-size: 2rem;
+    text-align: center;
+    margin: auto;
+} */
+header .container{
+    display: flex;    
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    background-color: #53917E;
+    color: white;
+}
+
+header .site_name{
+    flex:1;
+
+    font-size: 1.4rem;
+    margin-left: 50px;
+}
+
+header .headerbar_menu{
+    flex:3;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    font-size: 1.3rem;
+    list-style-type: none;
+
+    padding: 0;
+}
+
+.headerbar_menu li{
+    padding: 12px 12px;
+    text-align: center;
+}
+.headerbar_menu li:hover {
+    background-color: #236853;
+    border-radius: 5px;
+    color: white;
+}
+header .header_login{
+    flex:1;
+     
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    list-style-type: none;
+    place-items: center;
+    font-size: 1.3rem;
+
+    padding: 0;
+}
+footer{
+    /* position: absolute;*/
+    bottom: 0; 
+    width: 100%;
+
+    font-size: 0.8rem;
+    color: #777;
+    border-top:1px solid #dcdbdb;
+}
+.footerText{
+    margin-left: 15px;
+}
+.copyright{
+    float: right;
+    margin-right: 15px;
+}
+footer a:link {
+    font-size: 0.8rem;
+    color: #777;
+}
+footer a:link, footer a:visited  {
+    font-size: 0.8rem;
+    color: #777;
+}
