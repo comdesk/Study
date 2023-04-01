@@ -139,7 +139,7 @@ window.onload = function () {
             for (let i = 0; i < cateInLiArr[index].length; i++) {
                 let li = document.createElement("li");
                 li.setAttribute("class", "cate_in_li");
-                li.innerHTML = `<a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a>`;
+                li.innerHTML = `<a class="cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a>`;
                 // li = `<li class="cate_in_li"><a class = "cate_in_li_a" href="/board?name=${cateInLiArr[index][i].cateId}">${cateInLiArr[index][i].cateName}</a></li>`;
 
                 ul.appendChild(li);        
