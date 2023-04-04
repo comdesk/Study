@@ -39,9 +39,7 @@ CREATE TABLE region_board_comment (
     like_cnt NUMBER DEFAULT 0 NOT NULL,
     high_comment_no NUMBER,
     write_dt TIMESTAMP DEFAULT current_timestamp NOT NULL,
-    comment_lv NUMBER(1) DEFAULT 1 NOT NULL,
-    
-    CONSTRAINT region_board_comment_comment_no_post_no_pk PRIMARY KEY(comment_no, post_no)
+    comment_lv NUMBER(1) DEFAULT 1 NOT NULL
 );   
 
 DROP TABLE sale_board_comment;
@@ -54,9 +52,7 @@ CREATE TABLE sale_board_comment (
     like_cnt NUMBER DEFAULT 0 NOT NULL,
     high_comment_no NUMBER,
     write_dt TIMESTAMP DEFAULT current_timestamp NOT NULL,
-    comment_lv NUMBER(1) DEFAULT 1 NOT NULL,
-    
-    CONSTRAINT sale_board_comment_comment_no_post_no_pk PRIMARY KEY(comment_no, post_no)
+    comment_lv NUMBER(1) DEFAULT 1 NOT NULL
 );    
 
 DROP TABLE region_board_file;
@@ -67,9 +63,7 @@ CREATE TABLE region_board_file (
     file_name VARCHAR2(200) NOT NULL,
     file_path VARCHAR2(1000) NOT NULL,
     file_size NUMBER NOT NULL,
-    create_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    
-    CONSTRAINT region_board_file_file_id_post_no_pk PRIMARY KEY(file_id, post_no)
+    create_dt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 DROP TABLE sale_board_file;
