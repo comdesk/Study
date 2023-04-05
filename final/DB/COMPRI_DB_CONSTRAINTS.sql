@@ -90,6 +90,9 @@ CONSTRAINT region_board_bookmark_bookmark_no_pk PRIMARY KEY(bookmark_no);
 ALTER TABLE region_board_bookmark ADD
 CONSTRAINT region_board_bookmark_member_id_fk FOREIGN KEY(member_id) REFERENCES member(member_id) ON DELETE CASCADE;
 
+ALTER TABLE region_board_bookmark ADD
+CONSTRAINT region_board_bookmark_post_no_fk FOREIGN KEY(post_no) REFERENCES region_board(post_no) ON DELETE SET NULL;
+
 ALTER TABLE sale_board_bookmark ADD
 CONSTRAINT sale_board_bookmark_bookmark_no_pk PRIMARY KEY(bookmark_no);
 
