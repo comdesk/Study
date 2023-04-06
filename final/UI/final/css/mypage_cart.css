@@ -166,12 +166,12 @@ tr[aria-label="합계"] {
     margin-bottom: 50px;
 
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
 }
-#mycart_tbl_button > input {
+#mycart_tbl_button input {
     background-color: #cee9dd;
 }
-#mycart_tbl_button > button {
+#mycart_tbl_button > div > button {
     margin-left: 15px;
 }
 .mycart_tbl_bt {
