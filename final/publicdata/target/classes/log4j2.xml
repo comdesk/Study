@@ -14,7 +14,7 @@
 
     <Loggers>
     
-        <Logger name="org.zerock.myapp" level="trace" />
+        <Logger name="org.zerock.wecart" level="trace" />
 
         <!-- <logger name="log4jdbc.log4j2" level="info" additivity="false">
             <MarkerFilter marker="LOG4JDBC_OTHER" onMatch="DENY" onMismatch="NEUTRAL"/>            

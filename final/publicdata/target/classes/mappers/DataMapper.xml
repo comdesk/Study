@@ -5,6 +5,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.zerock.wecart.mapper.DataMapper">
+
+  <!-- 1. 상품 저장 -->
+  <update id="saveProduct">
+    UPDATE goods
+    SET capacity = #{capacity}, capacity_unit_id = #{capacity_unit_id}, category_id = #{category_id}
+    WHERE goods_name = #{goods_name}
+  </update>
+
+  <!-- 2. 업체 저장 -->
+  <update id="saveRetail">
+    UPDATE retail
+    SET retail_addr = #{retail_addr}, town_id = #{town_id}
+    WHERE retail_name = #{retail_name}
+  </update>
+
+  <!-- 3. 단위 저장 -->
+  <insert id="saveUnit">
+    INSERT INTO capacity_unit
+    VALUES (#{capacity_unit_id}, #{capacity_unit_name})
+  </insert>
+
+  <!-- 4. 카테고리 저장 -->
+  <insert id="saveCate">
+    INSERT INTO category
+    VALUES (#{category_id}, #{category_name})
+  </insert>
 	
   <!-- 5. 시도 지역 저장 -->
   <insert id="saveSiArea">

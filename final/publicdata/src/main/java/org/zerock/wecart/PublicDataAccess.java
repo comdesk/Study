@@ -15,11 +15,21 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.zerock.wecart.domain.CateDTO;
 import org.zerock.wecart.domain.GuAreaDTO;
+import org.zerock.wecart.domain.ProductA;
+import org.zerock.wecart.domain.ProductB;
+import org.zerock.wecart.domain.ProductC;
+import org.zerock.wecart.domain.ProductDTO;
+import org.zerock.wecart.domain.RetailA;
+import org.zerock.wecart.domain.RetailB;
+import org.zerock.wecart.domain.RetailC;
+import org.zerock.wecart.domain.RetailDTO;
 import org.zerock.wecart.domain.SiAreaDTO;
 import org.zerock.wecart.domain.StandardA;
 import org.zerock.wecart.domain.StandardB;
 import org.zerock.wecart.domain.StandardC;
+import org.zerock.wecart.domain.UnitDTO;
 import org.zerock.wecart.mapper.DataMapper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -135,6 +145,7 @@ public class PublicDataAccess {
 	
 	//SqlSessionFactory 생성
 	public void buildFactory() throws IOException{
+		log.trace("buildFactory() invoked.");		
 		
 		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
 		
@@ -145,6 +156,8 @@ public class PublicDataAccess {
 	
 	//시도 DB저장
 	public int saveSiArea(StandardA standardA) throws IOException{
+		log.trace("saveSiArea(standardA) invoked.");
+		
 		this.buildFactory();
 		
 		@Cleanup
@@ -186,7 +199,7 @@ public class PublicDataAccess {
 		
 		return affectedLines;
 		
-	} //save
+	} //saveSiArea
 	
 	//시군구 DB저장
 		public int saveGuArea(StandardA standardA) throws IOException{
@@ -284,8 +297,169 @@ public class PublicDataAccess {
 			
 			return affectedLines;
 			
-		} //save
+		} //saveGuArea
+		
+		public int saveCate(StandardA cateA) throws IOException {
+			log.trace("saveCate(cateA) invoked.");
+			
+			this.buildFactory();
+			
+			@Cleanup
+			SqlSession session = this.factory.openSession();
+			
+			DataMapper mapper = session.getMapper(DataMapper.class);
+			
+			StandardB b = cateA.getResult();
+			log.info("b: {}", b);
+			
+			List<StandardC> cateList = b.getStdInfoVO();
+			int affectedLines = 0;
+			
+			try {
+				for(StandardC cate : cateList) {
+					Integer category_id = Integer.parseInt(cate.getCode());
+					String category_name = cate.getCodeName();
+					
+					CateDTO dto = new CateDTO();
+					dto.setCategory_id(category_id);
+					dto.setCategory_name(category_name);
+					
+					affectedLines = mapper.saveCate(dto);
+					
+				} //enhanced for
+				
+				session.commit();
+			} catch(Exception e) {
+				session.rollback();
+			}
+			
+			return affectedLines;
+			
+		} //saveCate
+		
+		//업체 저장
+		public int saveRetail(RetailA retailA) throws IOException {
+			log.trace("saveRetail(retailA) invoked.");
+			
+			this.buildFactory();
+			
+			@Cleanup
+			SqlSession session = this.factory.openSession();
+			
+			DataMapper mapper = session.getMapper(DataMapper.class);
+			
+			RetailB b = retailA.getResult();
+			log.info("b: {}", b);
+			
+			List<RetailC> retailList = b.getEntpInfoVO();
+			int affectedLines = 0;
+			
+			try {
+				for(RetailC retail : retailList) {
+					String retail_name = retail.getEntpName();
+					String retail_addr = retail.getPlmkAddrBasic();
+					Integer town_id = Integer.parseInt(retail.getAreaDetailCode());
+					
+					RetailDTO dto = new RetailDTO();
+					dto.setRetail_name(retail_name);
+					dto.setRetail_addr(retail_addr);
+					dto.setTown_id(town_id);
+					
+					affectedLines = mapper.saveRetail(dto);
+					
+				} //enhanced for
+				
+				session.commit();
+			} catch(Exception e) {
+				session.rollback();
+			}
+			
+			return affectedLines;
+			
+		} //saveCate
+		
 	
+		//상품 저장
+		public int saveProduct(ProductA productA) throws IOException {
+			log.trace("saveProduct(productA) invoked.");
+			
+			this.buildFactory();
+			
+			@Cleanup
+			SqlSession session = this.factory.openSession();
+			
+			DataMapper mapper = session.getMapper(DataMapper.class);
+			
+			ProductB b = productA.getResult();
+			
+			List<ProductC> productList = b.getItem();
+			
+			int affectedLines = 0;
+			
+			try {
+				for(ProductC product : productList) {
+					String goods_name = product.getGoodName();
+					Integer capacity = Integer.parseInt(product.getGoodTotalCnt());
+					Integer capacity_unit_id = Integer.parseInt(product.getGoodUnitDivCode());
+					Integer category_id = Integer.parseInt(product.getGoodSmlclsCode());
+					
+					ProductDTO dto = new ProductDTO();
+					dto.setGoods_name(goods_name);
+					dto.setCapacity(capacity);
+					dto.setCapacity_unit_id(capacity_unit_id);
+					dto.setCategory_id(category_id);
+					
+					affectedLines = mapper.saveProduct(dto);
+					
+				} //enhanced for
+				
+				session.commit();
+			} catch(Exception e) {
+				session.rollback();
+			}
+			
+			return affectedLines;
+			
+		} //saveCate
+		
+		//업체 저장
+		public int saveUnit(StandardA unitA) throws IOException {
+			log.trace("saveUnit(unitA) invoked.");
+			
+			this.buildFactory();
+			
+			@Cleanup
+			SqlSession session = this.factory.openSession();
+			
+			DataMapper mapper = session.getMapper(DataMapper.class);
+			
+			StandardB b = unitA.getResult();
+			log.info("b: {}", b);
+			
+			List<StandardC> unitList = b.getStdInfoVO();
+			int affectedLines = 0;
+			
+			try {
+				for(StandardC unit : unitList) {
+					Integer capacity_unit_id = Integer.parseInt(unit.getCode());
+					String capacity_unit_name = unit.getCodeName();
+					
+					UnitDTO dto = new UnitDTO();
+					dto.setCapacity_unit_id(capacity_unit_id);
+					dto.setCapacity_unit_name(capacity_unit_name);
+					
+					affectedLines = mapper.saveUnit(dto);
+					
+				} //enhanced for
+				
+				session.commit();
+			} catch(Exception e) {
+				session.rollback();
+			}
+			
+			return affectedLines;
+			
+		} //saveCate
 } //end class
 
 
