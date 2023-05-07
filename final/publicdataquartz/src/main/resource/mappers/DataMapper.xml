@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.wecart.mapper.DataMapper">
+
+  <!-- 1. 상품 업데이트 -->
+  <update id="saveProduct">
+    UPDATE goods
+    SET capacity = #{capacity}, capacity_unit_id = #{capacity_unit_id}, category_id = #{category_id}
+    WHERE goods_name = #{goods_name}
+  </update>
+
+  <!-- 2. 업체 업데이트 -->
+  <update id="saveRetail">
+    UPDATE retail
+    SET retail_addr = #{retail_addr}, town_id = #{town_id}
+    WHERE retail_name = #{retail_name}
+  </update>
+
+</mapper>
