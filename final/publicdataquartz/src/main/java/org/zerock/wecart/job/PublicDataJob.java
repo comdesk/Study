@@ -30,14 +30,16 @@ public class PublicDataJob implements Job{
 			int affectedLinesProduct = data.saveProduct(productA);
 			System.out.println("affectedLinesProduct: " + affectedLinesProduct);
 			
-			
-			
-//			//업체정보 ADMIN계정에만
+//			//업체정보
 			String retailResult = data.testOpenAPI(retailEndPoint);
 			RetailA retailA = data.getJson(retailResult, new RetailA().getClass());
 			
 			int affectedLinesRetail = data.saveRetail(retailA);
 			log.info("affectedLinesRetail: {}", affectedLinesRetail);
+			
+			//상품평균가
+			int affectedLinesAvg = data.saveAvgPrice();
+			log.info("affectedLinesAvg: {}", affectedLinesAvg);
 
 			
 		} catch(Exception e) {

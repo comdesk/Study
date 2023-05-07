@@ -27,7 +27,7 @@ public class PublicDataQuartz {
 		
 //		-----
 
-		String cronExpression = "0 0 2 1 * ?";
+		String cronExpression = "0 0 2 ? * 6";
 		
 		Trigger cronTrigger =
 			TriggerBuilder.newTrigger().startNow().

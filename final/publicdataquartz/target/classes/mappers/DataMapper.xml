@@ -20,4 +20,18 @@
     WHERE retail_name = #{retail_name}
   </update>
 
+  <!-- 3. 상품 평균가 -->
+  <update id="saveAvgPrice">
+    UPDATE sale
+    SET avg_price = ROUND((
+      SELECT AVG(price) 
+      FROM sale s1
+      WHERE goods_id = sale.goods_id AND api_date = sale.api_date), 0) 
+    WHERE EXISTS (
+      SELECT 1 
+      FROM sale s2 
+      WHERE s2.goods_id = sale.goods_id AND s2.api_date = sale.api_date
+    )
+  </update>
+
 </mapper>

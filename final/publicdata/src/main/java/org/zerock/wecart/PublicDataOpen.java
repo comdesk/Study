@@ -21,23 +21,6 @@ public class PublicDataOpen {
 		String areaEndPoint = "http://openapi.price.go.kr/openApiImpl/ProductPriceInfoService/getStandardInfoSvc.do?classCode=AR&";
 		
 		try {
-		
-//			//상품정보
-			String productResult = data.testOpenAPI(productEndPoint);
-			ProductA productA = data.getJson(productResult, new ProductA().getClass());
-			
-			int affectedLinesProduct = data.saveProduct(productA);
-			System.out.println("affectedLinesProduct: " + affectedLinesProduct);
-			
-			
-			
-//			//업체정보 ADMIN계정에만
-			String retailResult = data.testOpenAPI(retailEndPoint);
-			RetailA retailA = data.getJson(retailResult, new RetailA().getClass());
-			
-			int affectedLinesRetail = data.saveRetail(retailA);
-			log.info("affectedLinesRetail: {}", affectedLinesRetail);
-		
 //			//단위정보
 			String unitResult = data.testOpenAPI(unitEndPoint);
 			StandardA unitA = data.getJson(unitResult, new StandardA().getClass());			
@@ -63,6 +46,23 @@ public class PublicDataOpen {
 
 			log.info("affectedLines: {}", affectedLines);
 			log.info("affectedLines2: {}", affectedLines2);
+		
+//			//상품정보
+			String productResult = data.testOpenAPI(productEndPoint);
+			ProductA productA = data.getJson(productResult, new ProductA().getClass());
+			
+			int affectedLinesProduct = data.saveProduct(productA);
+			System.out.println("affectedLinesProduct: " + affectedLinesProduct);		
+			
+			
+//			//업체정보 ADMIN계정에만
+			String retailResult = data.testOpenAPI(retailEndPoint);
+			RetailA retailA = data.getJson(retailResult, new RetailA().getClass());
+			
+			int affectedLinesRetail = data.saveRetail(retailA);
+			log.info("affectedLinesRetail: {}", affectedLinesRetail);
+		
+
 			
 		} catch(Exception e) {
 			e.printStackTrace();

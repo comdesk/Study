@@ -241,7 +241,35 @@ public class PublicDataAccess {
 		
 		return affectedLines;
 		
-	} //saveCate	
+	} //saveProduct
+	
+	//상품 평균가 업데이트
+	public int saveAvgPrice() throws IOException {
+		log.trace("saveAvgPrice() invoked.");
+		
+		this.buildFactory();
+		
+		@Cleanup
+		SqlSession session = this.factory.openSession();
+		
+		DataMapper mapper = session.getMapper(DataMapper.class);
+		
+		int affectedLines = 0;
+		
+		try {
+			mapper.saveAvgPrice();
+			
+			session.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+			
+			session.rollback();
+		}
+		
+		return affectedLines;
+		
+	} //saveAvgPrice
+	
 
 } //end class
 

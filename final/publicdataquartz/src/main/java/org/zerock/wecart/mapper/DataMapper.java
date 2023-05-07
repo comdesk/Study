@@ -15,4 +15,7 @@ public interface DataMapper {
 	//2. 업체 업데이트
 	public abstract int saveRetail(RetailDTO dto);
 	
+	//3. 상품 평균가
+	public abstract int saveAvgPrice();
+	
 } //end interface
