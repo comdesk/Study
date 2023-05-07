@@ -194,6 +194,8 @@ public class PublicDataAccess {
 			
 			session.commit();
 		} catch(Exception e) {
+			e.printStackTrace();
+			
 			session.rollback();
 		}
 		
@@ -292,6 +294,8 @@ public class PublicDataAccess {
 				
 				session.commit();
 			} catch(Exception e) {
+				e.printStackTrace();
+				
 				session.rollback();
 			}
 			
@@ -398,9 +402,9 @@ public class PublicDataAccess {
 			
 			try {
 				for(ProductC product : productList) {
-					String goods_name = product.getGoodName();
+					String goods_name = product.getGoodName().trim();
 					Integer capacity = Integer.parseInt(product.getGoodTotalCnt());
-					Integer capacity_unit_id = Integer.parseInt(product.getGoodUnitDivCode());
+					String capacity_unit_id = product.getGoodUnitDivCode();
 					Integer category_id = Integer.parseInt(product.getGoodSmlclsCode());
 					
 					ProductDTO dto = new ProductDTO();
@@ -415,6 +419,8 @@ public class PublicDataAccess {
 				
 				session.commit();
 			} catch(Exception e) {
+				e.printStackTrace();
+				
 				session.rollback();
 			}
 			
@@ -441,7 +447,7 @@ public class PublicDataAccess {
 			
 			try {
 				for(StandardC unit : unitList) {
-					Integer capacity_unit_id = Integer.parseInt(unit.getCode());
+					String capacity_unit_id = unit.getCode();
 					String capacity_unit_name = unit.getCodeName();
 					
 					UnitDTO dto = new UnitDTO();
@@ -454,6 +460,9 @@ public class PublicDataAccess {
 				
 				session.commit();
 			} catch(Exception e) {
+				e.printStackTrace();
+				log.trace("session rollback");
+				
 				session.rollback();
 			}
 			

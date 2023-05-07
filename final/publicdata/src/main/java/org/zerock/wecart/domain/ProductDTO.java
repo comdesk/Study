@@ -7,6 +7,6 @@ public class ProductDTO {
 
 	private String goods_name;
 	private Integer capacity;
-	private Integer capacity_unit_id;
+	private String capacity_unit_id;
 	private Integer category_id;
 } //end class

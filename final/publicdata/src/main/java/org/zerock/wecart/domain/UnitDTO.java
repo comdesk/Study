@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class UnitDTO {
 
-	private Integer capacity_unit_id;
+	private String capacity_unit_id;
 	private String capacity_unit_name;
 } //end class
