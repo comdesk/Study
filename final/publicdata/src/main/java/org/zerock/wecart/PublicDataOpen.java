@@ -21,6 +21,9 @@ public class PublicDataOpen {
 		String areaEndPoint = "http://openapi.price.go.kr/openApiImpl/ProductPriceInfoService/getStandardInfoSvc.do?classCode=AR&";
 		
 		try {
+			//SqlSessionBuildFactory 생성
+			data.buildFactory();
+			
 //			//단위정보
 			String unitResult = data.testOpenAPI(unitEndPoint);
 			StandardA unitA = data.getJson(unitResult, new StandardA().getClass());			
@@ -55,7 +58,7 @@ public class PublicDataOpen {
 			System.out.println("affectedLinesProduct: " + affectedLinesProduct);		
 			
 			
-//			//업체정보 ADMIN계정에만
+//			//업체정보
 			String retailResult = data.testOpenAPI(retailEndPoint);
 			RetailA retailA = data.getJson(retailResult, new RetailA().getClass());
 			

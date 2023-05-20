@@ -160,8 +160,6 @@ public class PublicDataAccess {
 	public int saveRetail(RetailA retailA) throws IOException {
 		log.trace("saveRetail(retailA) invoked.");
 		
-		this.buildFactory();
-		
 		@Cleanup
 		SqlSession session = this.factory.openSession();
 		
@@ -201,8 +199,6 @@ public class PublicDataAccess {
 	//상품 업데이트
 	public int saveProduct(ProductA productA) throws IOException {
 		log.trace("saveProduct(productA) invoked.");
-		
-		this.buildFactory();
 		
 		@Cleanup
 		SqlSession session = this.factory.openSession();
@@ -246,9 +242,7 @@ public class PublicDataAccess {
 	//상품 평균가 업데이트
 	public int saveAvgPrice() throws IOException {
 		log.trace("saveAvgPrice() invoked.");
-		
-		this.buildFactory();
-		
+
 		@Cleanup
 		SqlSession session = this.factory.openSession();
 		

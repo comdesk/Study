@@ -44,7 +44,7 @@ import lombok.extern.log4j.Log4j2;
 @NoArgsConstructor
 @Log4j2
 public class PublicDataAccess {
-//이미 URL Encoding 되어 있는 서비스 키
+	//이미 URL Encoding 되어 있는 서비스 키
 	private String serviceKey = "za%2FI4esx8hY%2F2ai3R759VtWOcO05iDsE%2FKbg9YkvCliD84cTEvJGnFUWgOxzA2nuAnLJc3dD5EMP1fU0uWsIdA%3D%3D";
 	
 	//URL Encoding 되어 있지 않은 서비스 키
@@ -135,8 +135,6 @@ public class PublicDataAccess {
 			
 		} catch (JsonProcessingException e) {
 		    e.printStackTrace();
-		} catch (IOException e) {
-		    e.printStackTrace();
 		} //try-catch
 		
 		return null;
@@ -157,8 +155,6 @@ public class PublicDataAccess {
 	//시도 DB저장
 	public int saveSiArea(StandardA standardA) throws IOException{
 		log.trace("saveSiArea(standardA) invoked.");
-		
-		this.buildFactory();
 		
 		@Cleanup
 		SqlSession session = this.factory.openSession();
@@ -205,7 +201,7 @@ public class PublicDataAccess {
 	
 	//시군구 DB저장
 		public int saveGuArea(StandardA standardA) throws IOException{
-			this.buildFactory();
+			log.trace("saveGuArea(standardA) invoked.");
 			
 			@Cleanup
 			SqlSession session = this.factory.openSession();
@@ -303,10 +299,9 @@ public class PublicDataAccess {
 			
 		} //saveGuArea
 		
+		//카테고리 저장
 		public int saveCate(StandardA cateA) throws IOException {
 			log.trace("saveCate(cateA) invoked.");
-			
-			this.buildFactory();
 			
 			@Cleanup
 			SqlSession session = this.factory.openSession();
@@ -344,8 +339,6 @@ public class PublicDataAccess {
 		//업체 저장
 		public int saveRetail(RetailA retailA) throws IOException {
 			log.trace("saveRetail(retailA) invoked.");
-			
-			this.buildFactory();
 			
 			@Cleanup
 			SqlSession session = this.factory.openSession();
@@ -386,8 +379,6 @@ public class PublicDataAccess {
 		//상품 저장
 		public int saveProduct(ProductA productA) throws IOException {
 			log.trace("saveProduct(productA) invoked.");
-			
-			this.buildFactory();
 			
 			@Cleanup
 			SqlSession session = this.factory.openSession();
@@ -431,8 +422,6 @@ public class PublicDataAccess {
 		//업체 저장
 		public int saveUnit(StandardA unitA) throws IOException {
 			log.trace("saveUnit(unitA) invoked.");
-			
-			this.buildFactory();
 			
 			@Cleanup
 			SqlSession session = this.factory.openSession();

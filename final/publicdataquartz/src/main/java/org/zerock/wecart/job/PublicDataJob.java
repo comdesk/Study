@@ -22,7 +22,8 @@ public class PublicDataJob implements Job{
 		
 		
 		try {
-		
+			data.buildFactory();
+			
 //			//상품정보
 			String productResult = data.testOpenAPI(productEndPoint);
 			ProductA productA = data.getJson(productResult, new ProductA().getClass());
